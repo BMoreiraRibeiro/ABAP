@@ -1,0 +1,31 @@
+site_name: Almanaque ABAP
+theme:
+  name: material
+  language: pt
+  features:
+    - navigation.instant     # navegação rápida
+    - navigation.top         # botão "voltar ao topo"
+    - search.suggest         # sugestões na pesquisa
+    - content.code.copy      # botão copiar código
+    - toc.integrate          # índice lateral integrado
+  palette:
+    # --- Modo claro ---
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Modo escuro
+
+    # --- Modo escuro ---
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+plugins:
+  - search
+  - awesome-pages
