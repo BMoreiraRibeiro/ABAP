@@ -1,4 +1,5 @@
 site_name: Almanaque ABAP
+site_url: https://bmoreiraribeiro.github.io/ABAP/
 theme:
   name: material
   language: pt
