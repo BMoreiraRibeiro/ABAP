@@ -9,6 +9,7 @@ theme:
     - search.suggest         # sugestões na pesquisa
     - content.code.copy      # botão copiar código
     - toc.integrate          # índice lateral integrado
+    - navigation.indexes     # permite clicar nas pastas e abrir index.md
   palette:
     # --- Modo claro ---
     - media: "(prefers-color-scheme: light)"
