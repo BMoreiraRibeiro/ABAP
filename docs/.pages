@@ -1,6 +1,7 @@
 title: ABAP — Mapa de Aprendizagem
+title: ABAP — Mapa de Aprendizagem
 nav:
-  - Home: index.md
+  - index.md
   - Fundamentos: fundamentos/index.md
   - SQL: sql/index.md
   - Objetos (OO): objetos/index.md
