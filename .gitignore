@@ -1,0 +1,14 @@
+# Ignore generated site folder from MkDocs
+/site/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+env/
+
+# Editor config
+.vscode/
+.idea/
