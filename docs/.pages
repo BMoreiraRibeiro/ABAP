@@ -2,15 +2,15 @@ title: ABAP — Mapa de Aprendizagem
 title: ABAP — Mapa de Aprendizagem
 nav:
   - index.md
-  - Fundamentos: fundamentos/index.md
-  - SQL: sql/index.md
-  - Objetos (OO): objetos/index.md
-  - ALV (List Viewer): alvs/index.md
-  - Debugging: debug/index.md
-  - Performance: performance/index.md
-  - Integrações: integracoes/index.md
-  - Jobs / Background: jobs/index.md
-  - Testes: testes/index.md
-  - Security: security/index.md
-  - Utilitários: utilitarios/index.md
-  - CDS / AMDP: cds_amdp/index.md
+  - Fundamentos: fundamentos
+  - SQL: sql
+  - Objetos (OO): objetos
+  - ALV (List Viewer): alvs
+  - Debugging: debug
+  - Performance: performance
+  - Integrações: integracoes
+  - Jobs / Background: jobs
+  - Testes: testes
+  - Security: security
+  - Utilitários: utilitarios
+  - CDS / AMDP: cds_amdp
