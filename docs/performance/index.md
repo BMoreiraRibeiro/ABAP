@@ -276,8 +276,9 @@ READ TABLE lt_materials WITH KEY matnr = 'MAT001'
 
 ## 🚀 Próximos Passos
 
-1. Comece por [FOR ALL ENTRIES](for_all_entries.md)
-2. Pratique com `ex01.md` a `ex10.md`
-3. Use SAT para analisar seus programas
-4. Aplique as boas práticas em código real
-5. Avance para [SQL](../sql/index.md) para otimizações de queries
+1. Comece por **[FOR ALL ENTRIES](1_for_all_entries.md)** para otimizar joins
+2. Aprenda sobre **[Índices](2_indices.md)** para queries mais rápidas
+3. Use **[SAT](3_runtime_analysis.md)** para analisar seus programas
+4. Implemente **[Buffering](4_buffering.md)** quando apropriado
+5. Otimize **[Tabelas Internas](5_tabelas_internas.md)** para melhor performance
+6. Evite **[Armadilhas Comuns](6_armadilhas.md)** de performance

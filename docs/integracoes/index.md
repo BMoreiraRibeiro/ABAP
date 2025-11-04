@@ -395,7 +395,8 @@ ENDTRY.
 
 ## 🚀 Próximos Passos
 
-1. Leia [BAPI Flight](bapi_flight.md)
-2. Experimente os exercícios `ex01.md` a `ex10.md`
-3. Configure uma integração REST real
-4. Explore [Jobs](../jobs/index.md) para processar integrações em background
+1. Comece com **[RFC](1_rfc.md)** para entender chamadas remotas
+2. Aprenda **[BAPIs](2_bapi.md)** para processos de negócio
+3. Explore **[OData](3_odata.md)** para aplicações Fiori
+4. Pratique com **[HTTP Client](4_http_client.md)** consumindo APIs externas
+5. Crie sua própria **[REST API](7_rest_api.md)** em ABAP
