@@ -1,126 +1,312 @@
-# 🔗 Integrações e RFCs
+# 🔗 Integrações
 
-Exemplos de integração com **SAP e serviços externos**: BAPIs, RFCs, IDocs e chamadas HTTP/REST.
-
----
-
-## 📖 O que vais aprender
-
-- Chamar BAPIs (Business Application Programming Interfaces)
-- Executar RFCs (Remote Function Calls)
-- Trabalhar com IDocs (Intermediate Documents)
-- Consumir APIs REST/HTTP externas
-- Enviar e receber dados JSON/XML
-- Integração com sistemas não-SAP
-- OData services
-- Web Services (SOAP)
+Guia completo de **integração entre sistemas SAP** e **serviços externos**: RFC, BAPIs, OData, HTTP Client, Web Services, IDocs e APIs REST.
 
 ---
 
-## 🎯 Tipos de Integração
+## 📖 Conteúdo
 
-### 1️⃣ BAPIs
-Funções SAP standard para operações de negócio.
+### 🌐 Protocolos e Tecnologias
 
-**Exemplo:** Buscar lista de voos
+1. **[RFC - Remote Function Call](1_rfc.md)**
+   - Tipos de RFC (sRFC, aRFC, tRFC, qRFC, bgRFC)
+   - Configuração SM59
+   - RFC síncrono vs assíncrono
+   - Chamadas para sistemas remotos
+   - Segurança e performance
+
+2. **[BAPI - Business Application Programming Interface](2_bapi.md)**
+   - O que são BAPIs
+   - BAPIs mais usados
+   - COMMIT e ROLLBACK
+   - Tratamento de erros (tabela RETURN)
+   - Criar BAPIs customizados
+
+3. **[OData Services](3_odata.md)**
+   - OData V2 vs V4
+   - Criar serviços OData (SEGW)
+   - Consumir OData (SAPUI5/Fiori)
+   - Query options ($filter, $select, $expand)
+   - RAP e CDS Views
+
+4. **[HTTP Client](4_http_client.md)**
+   - CL_HTTP_CLIENT
+   - Métodos GET, POST, PUT, DELETE
+   - Autenticação (Basic, Bearer, API Key)
+   - Headers e SSL
+   - Trabalhar com JSON
+
+5. **[Web Services SOAP](5_web_services.md)**
+   - SOAP vs REST
+   - Criar Web Service (SE80, SOAMANAGER)
+   - Consumir WSDL externo (SPROXY)
+   - WS-Security
+   - Monitorização
+
+6. **[IDocs - Intermediate Documents](6_idocs.md)**
+   - Estrutura de IDocs
+   - Configuração (SALE, WE20, WE21)
+   - Criar IDocs Outbound
+   - Processar IDocs Inbound
+   - Monitorização (WE02, WE05)
+
+7. **[REST API em ABAP](7_rest_api.md)**
+   - Criar API REST (SICF)
+   - Handler classes
+   - JSON serialization
+   - CORS e autenticação
+   - Boas práticas REST
+
+---
+
+## 🎯 Quick Start
+
+### Chamar BAPI
+
 ```abap
-CALL FUNCTION 'BAPI_FLIGHT_GETLIST'
+DATA: lt_return TYPE TABLE OF bapiret2.
+
+CALL FUNCTION 'BAPI_MATERIAL_GET_DETAIL'
   EXPORTING
-    airline = 'LH'
+    material = 'MAT-001'
   TABLES
-    flight_list = DATA(lt_flights).
+    return = lt_return.
 
-LOOP AT lt_flights INTO DATA(ls_flight).
-  WRITE: / ls_flight-flightdate, ls_flight-airportfr.
-ENDLOOP.
+" Verificar erros
+READ TABLE lt_return WITH KEY type = 'E' TRANSPORTING NO FIELDS.
+IF sy-subrc = 0.
+  WRITE: / '❌ Erro ao buscar material'.
+ELSE.
+  WRITE: / '✅ Material encontrado'.
+ENDIF.
 ```
 
-[Ver exemplo completo →](bapi_flight.md)
+### Consumir API REST
 
-### 2️⃣ RFC (Remote Function Call)
-Chamar funções em sistemas remotos.
-
-**Exemplo:**
 ```abap
-CALL FUNCTION 'Z_REMOTE_FUNCTION' 
-  DESTINATION 'SISTEMA_REMOTO'
-  EXPORTING
-    iv_param = lv_value
-  IMPORTING
-    ev_result = lv_result.
-```
-
-### 3️⃣ HTTP / REST APIs
-Consumir serviços web externos.
-
-**Exemplo com CL_HTTP_CLIENT:**
-```abap
-DATA: lo_client TYPE REF TO if_http_client,
-      lv_response TYPE string.
+DATA: lo_http_client TYPE REF TO if_http_client.
 
 cl_http_client=>create_by_url(
-  EXPORTING url = 'https://api.exemplo.com/dados'
-  IMPORTING client = lo_client ).
+  EXPORTING url = 'https://api.example.com/users'
+  IMPORTING client = lo_http_client ).
 
-lo_client->request->set_method( 'GET' ).
-lo_client->send( ).
-lo_client->receive( ).
+lo_http_client->request->set_method( if_http_request=>co_request_method_get ).
+lo_http_client->send( ).
+lo_http_client->receive( ).
 
-lv_response = lo_client->response->get_cdata( ).
-WRITE: / lv_response.
-```
-
-### 4️⃣ JSON / XML
-Parse e criar estruturas de dados.
-
-**JSON:**
-```abap
-DATA: lv_json TYPE string,
-      lt_data TYPE TABLE OF sflight.
-
-SELECT * FROM sflight INTO TABLE lt_data UP TO 10 ROWS.
-
-" Serializar para JSON
-lv_json = /ui2/cl_json=>serialize( data = lt_data ).
+DATA(lv_json) = lo_http_client->response->get_cdata( ).
 WRITE: / lv_json.
 
-" Deserializar de JSON
-/ui2/cl_json=>deserialize(
-  EXPORTING json = lv_json
-  CHANGING  data = lt_data ).
+lo_http_client->close( ).
+```
+
+### Criar Ordem via BAPI
+
+```abap
+DATA: ls_header TYPE bapisdhd1,
+      lt_items TYPE TABLE OF bapisditm,
+      lt_return TYPE TABLE OF bapiret2,
+      lv_order TYPE vbeln_va.
+
+" Cabeçalho
+ls_header-doc_type = 'TA'.
+ls_header-sales_org = '1000'.
+ls_header-distr_chan = '10'.
+ls_header-division = '00'.
+
+" Item
+APPEND VALUE #(
+  itm_number = '000010'
+  material = 'MAT-001'
+  target_qty = '10'
+) TO lt_items.
+
+" Criar ordem
+CALL FUNCTION 'BAPI_SALESORDER_CREATEFROMDAT2'
+  EXPORTING
+    order_header_in = ls_header
+  IMPORTING
+    salesdocument = lv_order
+  TABLES
+    return = lt_return
+    order_items_in = lt_items.
+
+" Verificar e commit
+READ TABLE lt_return WITH KEY type = 'E' TRANSPORTING NO FIELDS.
+IF sy-subrc = 0.
+  CALL FUNCTION 'BAPI_TRANSACTION_ROLLBACK'.
+ELSE.
+  CALL FUNCTION 'BAPI_TRANSACTION_COMMIT' EXPORTING wait = 'X'.
+  WRITE: / |✅ Ordem criada: { lv_order }|.
+ENDIF.
 ```
 
 ---
 
-## 📚 Tutoriais e Exemplos
+## 📊 Comparação de Tecnologias
 
-### BAPIs Comuns
-- `BAPI_FLIGHT_GETLIST` — Buscar voos
-- `BAPI_MATERIAL_GET_DETAIL` — Detalhes de material
-- `BAPI_SALESORDER_CREATEFROMDAT2` — Criar ordem de venda
-- `BAPI_CUSTOMER_GETLIST` — Listar clientes
-- `BAPI_TRANSACTION_COMMIT` — Commit de transação
-
-[Ver exemplo BAPI →](bapi_flight.md)
-
-### Exercícios Práticos
-- `ex01.md` → BAPI básica
-- `ex02.md` → RFC para sistema remoto
-- `ex03.md` → Consumir API REST
-- `ex04.md` → Parse JSON
-- `ex05.md` → Criar Web Service
-- `ex06-ex10.md` → Integrações avançadas
+| Tecnologia | Tipo | Formato | Uso | Performance | Complexidade |
+|------------|------|---------|-----|-------------|--------------|
+| **RFC** | Sínc/Assínc | Binário | SAP ↔ SAP | ⚡ Rápido | 🟢 Baixa |
+| **BAPI** | Síncrono | Binário | Processos de negócio | ⚡ Rápido | 🟢 Baixa |
+| **OData** | Síncrono | JSON/XML | **Fiori, Apps Web** | ⚡ Rápido | 🟡 Média |
+| **HTTP Client** | Síncrono | JSON/XML | APIs externas | ⚡ Rápido | 🟢 Baixa |
+| **SOAP** | Síncrono | XML | Legacy, Sistemas externos | 🐌 Lento | 🔴 Alta |
+| **IDoc** | Assíncrono | Proprietário | EDI, SAP ↔ SAP | 🟡 Médio | 🟡 Média |
+| **REST** | Síncrono | JSON | **APIs modernas** | ⚡ Rápido | 🟢 Baixa |
 
 ---
 
-## 🔧 Ferramentas Úteis
+## � Quando Usar Cada Tecnologia
 
-### Transações SAP
-- **SE37** — Testar function modules e BAPIs
-- **SM59** — Configurar destinos RFC
-- **SPROXY** — Criar proxies para Web Services
-- **SICF** — Configurar serviços HTTP
-- **WE02** — Monitorizar IDocs
+### ✅ RFC
+- Comunicação entre sistemas SAP
+- Chamadas assíncronas (background)
+- Processos que precisam de garantia de execução (tRFC)
+
+### ✅ BAPI
+- Operações de negócio padronizadas
+- Criar/modificar dados mestres (clientes, materiais)
+- Transações (ordens, faturas)
+
+### ✅ OData
+- **Aplicações Fiori/SAPUI5**
+- Apps web modernas
+- Mobile apps
+- RESTful APIs com metadata
+
+### ✅ HTTP Client
+- Consumir APIs REST de terceiros
+- Integração com cloud services
+- Webhooks e notificações
+
+### ✅ SOAP/Web Services
+- Sistemas legados que exigem SOAP
+- Contratos formais (WSDL)
+- WS-Security necessário
+
+### ✅ IDocs
+- EDI (Electronic Data Interchange)
+- Integração assíncrona com garantia de entrega
+- Auditoria completa de mensagens
+
+### ✅ REST API
+- **Criar APIs customizadas**
+- Expor dados SAP para sistemas externos
+- Integrações modernas e leves
+---
+
+## 🔧 Ferramentas e Transactions
+
+### Desenvolvimento
+- **SE37** - Function Builder (testar BAPIs)
+- **SE80** - Object Navigator (criar Web Services)
+- **SEGW** - Gateway Service Builder (OData)
+- **SICF** - HTTP Service Maintenance (REST API)
+- **SPROXY** - Enterprise Service Builder
+
+### Configuração
+- **SM59** - RFC Destinations
+- **WE20** - Partner Profiles (IDoc)
+- **WE21** - Port Definition (IDoc)
+- **SOAMANAGER** - Web Service Administration
+- **SALE** - ALE Customizing
+
+### Monitorização
+- **WE02/WE05** - IDoc Display/List
+- **SRT_UTIL** - Web Service Runtime
+- **SXMB_MONI** - Integration Engine Monitoring
+- **/IWFND/ERROR_LOG** - OData Error Log
+- **ST22** - ABAP Dumps
+
+---
+
+## 🎓 Recursos de Aprendizagem
+
+### Documentação Oficial SAP
+- SAP Help Portal - BAPIs
+- SAP Gateway Developer Guide
+- SAP IDoc Documentation
+
+### Tutoriais Práticos
+- [RFC Configuration Guide](1_rfc.md#configuração-de-destinos-rfc-sm59)
+- [BAPI Best Practices](2_bapi.md#boas-práticas)
+- [OData Service Creation](3_odata.md#criar-odata-service-v2)
+- [REST API Development](7_rest_api.md#criar-rest-api-provider)
+
+---
+
+## 🔒 Segurança
+
+### Authorization Objects
+
+**RFC:**
+- `S_RFC` - RFC Authorization
+
+**OData:**
+- `/IWFND/RT_GW` - Gateway Runtime
+
+**IDocs:**
+- `S_IDOC_ALL` - IDoc Administration
+
+### Boas Práticas
+
+```abap
+" ✅ Validar input
+IF lv_input IS INITIAL.
+  RAISE EXCEPTION TYPE cx_invalid_parameter.
+ENDIF.
+
+" ✅ Usar HTTPS
+cl_http_client=>create_by_url(
+  EXPORTING url = 'https://api.example.com'  " HTTPS!
+  IMPORTING client = lo_client ).
+
+" ✅ Não expor dados sensíveis
+" Filtrar campos antes de enviar JSON
+
+" ✅ Rate limiting
+IF zcl_rate_limiter=>check_limit( sy-uname ) = abap_false.
+  " Reject request
+ENDIF.
+```
+
+---
+
+## � Performance
+
+### Otimizações
+
+```abap
+" ✅ Limitar dados
+SELECT * FROM mara
+  UP TO 100 ROWS  " Limite!
+  INTO TABLE @DATA(lt_data).
+
+" ✅ Usar índices
+" WHERE clauses com campos indexados
+
+" ✅ Paginação em APIs
+" ?page=1&per_page=20
+
+" ✅ Compressão
+" SOAMANAGER → Enable compression
+
+" ✅ Cache
+" Cachear respostas de APIs externas
+```
+
+---
+
+## 🔗 Próximos Passos
+
+- **[SQL](../sql/index.md)** - Otimizar queries de integração
+- **[Performance](../performance/index.md)** - Performance tuning
+- **[Debug](../debug/index.md)** - Debugar integrações
+
+---
+
+**Tags:** `#Integrações` `#RFC` `#BAPI` `#OData` `#REST` `#HTTP` `#WebServices` `#IDoc` `#API`
 
 ### Classes Úteis
 - `CL_HTTP_CLIENT` — Cliente HTTP
