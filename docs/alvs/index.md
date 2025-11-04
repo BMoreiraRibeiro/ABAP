@@ -48,6 +48,7 @@ ALV (ABAP List Viewer) é uma ferramenta SAP para exibir dados de forma estrutur
 8. [ALV com Eventos](alv_eventos.md)
 9. [ALV com Botões Customizados](alv_botoes_custom.md)
 10. [ALV com Layout e Variantes](alv_layout_variantes.md)
+11. [ALV para Seleção de Valores](alv_selecao_valores.md)
 
 ---
 
@@ -120,6 +121,30 @@ CALL METHOD lo_alv->set_table_for_first_display CHANGING it_outtab = lt_sflight.
 O exemplo dinâmico `Z_DYNAMIC_SALV_TREE` constrói recursivamente uma árvore a partir de qualquer estrutura (campos simples, estruturas internas e tabelas internas). Veja o exemplo completo na página.
 
 [Ler mais »](alv_tree.md)
+
+### ALV para Seleção de Valores (trecho)
+
+```abap
+" Seleção múltipla com popup e checkbox
+CALL FUNCTION 'REUSE_ALV_POPUP_TO_SELECT'
+  EXPORTING
+    i_title              = 'Selecione Clientes'
+    i_selection          = 'X'
+    i_checkbox_fieldname = 'SEL'
+  IMPORTING
+    e_exit               = DATA(lv_exit)
+  TABLES
+    t_outtab             = lt_clientes
+    it_fieldcat          = lt_fieldcat.
+
+IF sy-subrc = 0 AND lv_exit IS INITIAL.
+  LOOP AT lt_clientes INTO DATA(ls_cliente) WHERE sel = 'X'.
+    " Processar registos selecionados
+  ENDLOOP.
+ENDIF.
+```
+
+[Ler mais »](alv_selecao_valores.md)
 
 ---
 

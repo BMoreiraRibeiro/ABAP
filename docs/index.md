@@ -3,11 +3,7 @@
 Bem-vindo ao **Almanaque ABAP** — um guia prático, organizado por curva de aprendizagem, com exemplos, padrões e exercícios.
 
 Se está a começar, siga a ordem sugerida abaixo; se já conhece os fundamentos, navegue diretamente pelos temas avançados.
-
----
-
 ## 📚 Percurso de Aprendizagem
-
 ### 🧩 [Fundamentos](fundamentos/index.md)
 Conceitos básicos, tipos de dados, tabelas internas e estrutura do programa.
 ### 💾 [SQL](sql/index.md)
@@ -49,3 +45,4 @@ Core Data Services e ABAP Managed Database Procedures.
 ---
 
 **Boa aprendizagem!** 🎓
+

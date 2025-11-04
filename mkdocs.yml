@@ -31,3 +31,9 @@ theme:
 plugins:
   - search
   - awesome-pages
+markdown_extensions:
+  - admonition              # ativa caixas de dicas
+  - pymdownx.details        # permite colapsar caixas
+  - pymdownx.superfences    # permite código dentro das caixas
+  - attr_list               # permite atributos como {width=50%}
+  - md_in_html              # permite HTML inline
