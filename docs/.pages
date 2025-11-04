@@ -3,6 +3,7 @@ nav:
   - index.md
   - Fundamentos: fundamentos
   - SQL: sql
+  - CDS Views: cds
   - Objetos (OO): objetos
   - ALV (List Viewer): alvs
   - Debugging: debug
@@ -12,4 +13,4 @@ nav:
   - Testes: testes
   - Security: security
   - Utilitários: utilitarios
-  - CDS / AMDP: cds_amdp
+  - CDS & AMDP Avançado: cds_amdp

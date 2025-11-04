@@ -19,7 +19,7 @@ Introdução à programação orientada a objetos em ABAP: **classes, métodos, 
 
 ## 🎯 Ordem de Aprendizagem
 
-### 1️⃣ [Classes Básicas](classes_basico.md)
+### 1️⃣ [Classes e Objetos](1_classes_objetos.md)
 Como definir e usar classes locais e globais.
 
 **Exemplo simples:**
@@ -42,10 +42,10 @@ START-OF-SELECTION.
   WRITE: / |Resultado: { lv_soma }|.
 ```
 
-### 2️⃣ Atributos e Encapsulamento
-Controlar acesso aos dados da classe.
+### 2️⃣ [Atributos e Métodos](2_atributos_metodos.md)
+Controlar acesso aos dados da classe e definir comportamentos.
 
-### 3️⃣ Construtores
+### 3️⃣ [Construtores](3_construtores.md)
 Inicializar objetos com `CONSTRUCTOR`.
 
 ### 4️⃣ Interfaces
@@ -54,27 +54,14 @@ Definir contratos que classes devem implementar.
 ### 5️⃣ Herança
 Reutilizar código através de `INHERITING FROM`.
 
-### 6️⃣ Métodos Estáticos
-Usar `CLASS-METHODS` sem instanciar objetos.
+### 6️⃣ Polimorfismo
+Tratar objetos diferentes através da mesma interface.
 
-### 7️⃣ Eventos
-Comunicação entre objetos via eventos.
+### 7️⃣ Factory Pattern
+Padrão de criação de objetos.
 
-### 8️⃣ Padrões de Design
-Singleton, Factory, Observer, etc.
-
----
-
-## 📚 Exercícios Práticos
-
-Temos **10 exercícios** em `ex01.md` a `ex10.md` que cobrem:
-
-- Criação de classes básicas
-- Implementação de interfaces
-- Uso de herança
-- Padrões Singleton e Factory
-- Eventos entre classes
-- Exceções customizadas
+### 8️⃣ Singleton Pattern
+Garantir uma única instância de uma classe.
 
 ---
 
@@ -131,7 +118,12 @@ START-OF-SELECTION.
 
 ## 🚀 Próximos Passos
 
-1. Comece por [Classes Básicas](classes_basico.md)
-2. Pratique com os exercícios `ex01.md` a `ex10.md`
-3. Explore padrões de design em projetos reais
-4. Avance para [ALV OO](../alvs/index.md) para aplicar OO em interfaces
+1. Comece por [Classes e Objetos](1_classes_objetos.md)
+2. Continue com [Atributos e Métodos](2_atributos_metodos.md)
+3. Aprenda sobre [Construtores](3_construtores.md)
+4. Explore padrões de design em projetos reais
+5. Avance para [ALV OO](../alvs/index.md) para aplicar OO em interfaces
+
+---
+
+**Tags:** `#OO` `#Classes` `#ABAP` `#Programação-Orientada-Objetos`

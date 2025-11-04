@@ -50,10 +50,10 @@ Monitorizar mudanças em variáveis específicas.
 
 ### Debugger Clássico
 - `/h` antes de executar o programa
-- F5 → Step into (entrar em método)
-- F6 → Step over (executar linha)
-- F7 → Return (voltar ao chamador)
-- F8 → Continue (até próximo breakpoint)
+- **F5** → Step into (entrar em método)
+- **F6** → Step over (executar linha)
+- **F7** → Return (voltar ao chamador)
+- **F8** → Continue (até próximo breakpoint)
 
 ### Novo Debugger
 - Mais visual e com abas
@@ -69,20 +69,6 @@ Monitorizar mudanças em variáveis específicas.
 - Medir performance do código
 - Identificar gargalos
 - Ver tempo gasto por método/função
-
----
-
-## 📚 Tutoriais
-
-### [Breakpoints](breakpoint.md)
-Guia completo sobre tipos e uso de breakpoints.
-
-### Exercícios Práticos
-- `ex01.md` → Debug básico
-- `ex02.md` → Watchpoints
-- `ex03.md` → Debug em LOOPs
-- `ex04.md` → Análise de dumps
-- `ex05.md` → Runtime analysis
 
 ---
 
@@ -121,6 +107,24 @@ START-OF-SELECTION.
 
 ---
 
+## 🎓 Comandos Úteis no Debugger
+
+### Atalhos de Teclado
+- **/h** - Ativar debug antes de executar
+- **F5** - Step into (entrar em call)
+- **F6** - Step over (próxima linha)
+- **F7** - Return (sair de call)
+- **F8** - Continue (próximo breakpoint)
+- **Shift+F12** - Definir watchpoint
+
+### Comandos de Console
+- **=** - Ver valor de variável (ex: `= lv_valor`)
+- **?** - Ver estrutura (ex: `? ls_estrutura`)
+- **/hdel** - Apagar todos breakpoints
+- **/hbreak** - Listar breakpoints ativos
+
+---
+
 ## 🚨 Boas Práticas
 
 ### ✅ Fazer
@@ -128,17 +132,33 @@ START-OF-SELECTION.
 - Usar breakpoints condicionais para LOOPs grandes
 - Usar watchpoints para rastrear mudanças inesperadas
 - Analisar ST22 para entender erros
+- Documentar problemas encontrados
 
 ### ❌ Evitar
 - Deixar `BREAK-POINT` em código produtivo
 - Debugar sem ter hipóteses sobre o problema
 - Ignorar o call stack
+- Fazer debug em produção sem autorização
+
+---
+
+## 🔗 Transactions Úteis
+
+- **ST22** - Análise de dumps (short dumps)
+- **SAT (SE30)** - Runtime Analysis
+- **ST05** - SQL Trace
+- **ST12** - Performance Trace
+- **SM50** - Process Overview
+- **SM21** - System Log
 
 ---
 
 ## 🔗 Próximos Passos
 
-1. Leia [Breakpoints](breakpoint.md)
-2. Pratique com programas simples
-3. Experimente os exercícios `ex01.md` a `ex05.md`
-4. Aprenda [Performance](../performance/index.md) para otimizar código
+1. Pratique com programas simples
+2. Aprenda [Performance](../performance/index.md) para otimizar código após identificar problemas
+3. Explore [SQL](../sql/index.md) para otimizar consultas identificadas no trace
+
+---
+
+**Tags:** `#Debug` `#Breakpoint` `#Performance` `#ST22` `#SAT`

@@ -18,7 +18,7 @@ Consultas básicas, JOINS, agregações e manipulação de dados na base de dado
 
 ## 🎯 Ordem de Aprendizagem
 
-### 1️⃣ [SELECT Básico](select_basico.md)
+### 1️⃣ [SELECT Básico](1_select_basico.md)
 Como buscar dados de tabelas SAP.
 
 **Exemplo:**
@@ -29,7 +29,7 @@ LOOP AT lt_scarr INTO DATA(ls_scarr).
 ENDLOOP.
 ```
 
-### 2️⃣ [JOINS](joins.md)
+### 2️⃣ [JOINS](2_joins.md)
 Combinar dados de múltiplas tabelas.
 
 **Exemplo:**
@@ -41,31 +41,57 @@ SELECT a~carrid, a~connid, b~carrname
   UP TO 10 ROWS.
 ```
 
-### 3️⃣ [Agregações](agregacoes.md)
+### 3️⃣ [Agregações e GROUP BY](3_agregacoes.md)
 Funções estatísticas e agrupamento.
 
 **Exemplo:**
 ```abap
 SELECT carrid, 
        COUNT( * ) AS total_voos, 
-       AVG( price ) AS preco_medio
+       AVG( price AS DEC( 15,2 ) ) AS preco_medio
   FROM sflight
   GROUP BY carrid
   INTO TABLE @DATA(lt_stats).
 ```
 
----
+### 4️⃣ [INSERT, UPDATE, DELETE](4_insert_update_delete.md)
+Manipular dados na base de dados.
 
-## 📚 Exercícios Práticos
+**Exemplo:**
+```abap
+INSERT scarr FROM @( VALUE #(
+  carrid = 'PT' carrname = 'TAP Air Portugal'
+) ).
 
-Temos **25 exercícios** progressivos em `ex01.md` a `ex25.md` que cobrem:
+UPDATE sflight SET price = price * '1.10'
+  WHERE carrid = 'LH'.
+```
 
-- SELECTs com filtros complexos
-- Subconsultas (subqueries)
-- CASE statements
-- Agregações múltiplas
-- JOINS de 3+ tabelas
-- Otimização de performance SQL
+### 5️⃣ [WHERE Dinâmico](5_where_dinamico.md)
+Consultas SQL flexíveis em tempo de execução.
+
+**Exemplo:**
+```abap
+DATA(lv_where) = |carrid = '{ p_carrid }' AND price >= { p_preco }|.
+
+SELECT * FROM sflight
+  WHERE (lv_where)
+  INTO TABLE @DATA(lt_voos).
+```
+
+### 6️⃣ [Otimizações SQL](6_otimizacoes.md)
+Técnicas para melhorar performance.
+
+**Exemplo:**
+```abap
+" ✅ Rápido: SELECT único com FOR ALL ENTRIES
+IF lt_pedidos IS NOT INITIAL.
+  SELECT * FROM vbap
+    FOR ALL ENTRIES IN @lt_pedidos
+    WHERE vbeln = @lt_pedidos-vbeln
+    INTO TABLE @DATA(lt_itens).
+ENDIF.
+```
 
 ---
 
@@ -117,7 +143,10 @@ START-OF-SELECTION.
 
 ## 🔗 Próximos Passos
 
-1. Comece por [SELECT Básico](select_basico.md)
-2. Depois siga para [JOINS](joins.md)
-3. Pratique com os exercícios `ex01.md` a `ex25.md`
-4. Avance para [Performance](../performance/index.md) para otimizações
+1. Comece por [SELECT Básico](1_select_basico.md)
+2. Depois siga para [JOINS](2_joins.md)
+3. Continue com [Agregações](3_agregacoes.md)
+4. Aprenda a [manipular dados](4_insert_update_delete.md)
+5. Explore [WHERE Dinâmico](5_where_dinamico.md)
+6. Domine [Otimizações SQL](6_otimizacoes.md)
+7. Avance para [Performance](../performance/index.md) para otimizações avançadas

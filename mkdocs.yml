@@ -6,11 +6,13 @@ theme:
   features:
     - navigation.instant     # navegação rápida
     - navigation.top         # botão "voltar ao topo"
+    - navigation.tracking    # atualiza URL ao rolar
     - search.suggest         # sugestões na pesquisa
+    - search.highlight       # destaca termos pesquisados
     - content.code.copy      # botão copiar código
     - navigation.indexes     # permite clicar nas pastas e abrir index.md
-    - navigation.sections    # agrupa navegação em secções
-    # navigation.expand está DESATIVADO para permitir expansão manual
+    # NOTA: navigation.expand e navigation.sections foram removidos
+    # para permitir navegação colapsável manual com indentação
   palette:
     # --- Modo claro ---
     - media: "(prefers-color-scheme: light)"

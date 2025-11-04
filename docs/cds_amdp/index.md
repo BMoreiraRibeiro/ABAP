@@ -29,7 +29,7 @@ CDS Views são **views semânticas** definidas em linguagem DDL (Data Definition
 
 ---
 
-## 💡 [Exemplo de CDS View](cds_view.md)
+## 💡 Exemplo de CDS View
 
 ### CDS Simples
 
@@ -229,38 +229,24 @@ zcl_amdp_example=>get_top_flights(
 
 ---
 
-## 📚 Exercícios Práticos
+## 🛠️ Ferramentas Recomendadas
 
-Exercícios disponíveis (serão desenvolvidos):
-- `ex01.md` → CDS básica
-- `ex02.md` → CDS com associations
-- `ex03.md` → CDS com parâmetros
-- `ex04.md` → AMDP simples
-- `ex05.md` → AMDP com aggregations
-- `ex06-ex10.md` → Casos avançados
-
----
-
-## 🛠️ Ferramentas
-
-### Criar CDS View
-1. Eclipse (ADT) → New → Core Data Services → Data Definition
-2. Ou SE11 (limitado, recomenda-se ADT)
-
-### Testar CDS
-- **Data Preview** no Eclipse (F8)
-- **SE16** com nome da SQL view
-
-### Ativar CDS para OData
-Annotation `@OData.publish: true`
+- **Eclipse ADT (ABAP Development Tools)**: Criar e editar CDS Views
+- **Data Preview (F8)**: Testar CDS Views no Eclipse
+- **Transaction SE16**: Ver dados da SQL view gerada
+- **Transaction SE11**: Dicionário de dados (limitado para CDS)
 
 ---
 
 ## 🔗 Próximos Passos
 
-1. Leia [CDS View](cds_view.md)
+1. Consulte a secção [CDS Views](../cds/index.md) para tutoriais detalhados
 2. Instale **ABAP Development Tools (ADT)** no Eclipse
 3. Crie uma CDS simples
 4. Experimente associations
 5. Teste AMDP se tiver HANA
-7. Explore [SQL](../sql/index.md) para otimizar queries
+6. Explore [SQL](../sql/index.md) para otimizar queries
+
+---
+
+**Tags:** `#CDS` `#AMDP` `#HANA` `#Performance` `#Modern-ABAP`
