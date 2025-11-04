@@ -1,1 +1,8 @@
-title: "CDS"
+title: CDS Views
+nav:
+  - index.md
+  - Introdução: 1_introducao.md
+  - JOINs e Associações: 2_joins.md
+  - Anotações e Metadata: 3_anotacoes_metadata.md
+  - Funções e Expressões: 4_funcoes.md
+  - Parâmetros e Views Parametrizadas: 5_parametros_filtros_views_param.md

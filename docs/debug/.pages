@@ -1,0 +1,9 @@
+title: Debug e Análise
+nav:
+  - index.md
+  - Breakpoints: 1_breakpoints.md
+  - Watchpoints: 2_watchpoints.md
+  - Debugger Clássico vs Novo: 3_debugger.md
+  - Análise de Dumps ST22: 4_st22.md
+  - Runtime Analysis SAT: 5_sat.md
+  - Debug de Jobs: 6_debug_jobs.md

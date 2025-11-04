@@ -1,0 +1,9 @@
+title: Performance e Boas Práticas
+nav:
+  - index.md
+  - FOR ALL ENTRIES: 1_for_all_entries.md
+  - Índices de BD: 2_indices.md
+  - Runtime Analysis SAT: 3_runtime_analysis.md
+  - Table Buffering: 4_buffering.md
+  - Tabelas Internas Eficientes: 5_tabelas_internas.md
+  - Armadilhas Comuns: 6_armadilhas.md

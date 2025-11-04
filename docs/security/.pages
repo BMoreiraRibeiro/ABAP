@@ -1,1 +1,9 @@
-title: "Segurança"
+title: Segurança
+nav:
+  - index.md
+  - Autorizações: 1_autorizacoes.md
+  - AUTHORITY-CHECK: 2_authority_check.md
+  - Roles e Perfis: 3_roles_perfis.md
+  - Objeto S_DEVELOP: 4_s_develop.md
+  - Práticas Seguras: 5_praticas_seguras.md
+  - SQL Injection: 6_sql_injection.md

@@ -1,1 +1,10 @@
-title: "Integrações"
+title: Integrações
+nav:
+  - index.md
+  - RFC Remote Function Call: 1_rfc.md
+  - BAPI: 2_bapi.md
+  - OData Services: 3_odata.md
+  - HTTP Client: 4_http_client.md
+  - Web Services SOAP: 5_web_services.md
+  - IDocs: 6_idocs.md
+  - API RESTful: 7_rest_api.md

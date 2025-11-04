@@ -1,3 +1,10 @@
+---
+tags:
+  - ABAP
+  - Fundamentos
+  - Iniciante
+---
+
 # 🧩 Fundamentos ABAP
 
 Esta secção introduz os **conceitos fundamentais da linguagem ABAP** — a base essencial de todo o desenvolvimento SAP.
@@ -9,38 +16,36 @@ Esta secção introduz os **conceitos fundamentais da linguagem ABAP** — a bas
 - Tipos de dados primitivos e complexos
 - Declaração e uso de variáveis e constantes
 - Trabalhar com tabelas internas (arrays ABAP)
-- Field-symbols e referências de dados
 - Estruturas e tipos customizados
-- Criar ecrãs de seleção básicos
-- Tratamento de exceções com TRY/CATCH
+- Condições e operadores lógicos
+- Loops e iterações
+- Expressões modernas ABAP (7.40+)
+- Orientação a objetos básica
 
 ---
 
 ## 🎯 Ordem de Aprendizagem
 
-### 1️⃣ [Tipos de Dados](tipos_de_dados.md)
-Tipos elementares: `i`, `p`, `c`, `string`, `d`, `t` e como usá-los.
+### 1️⃣ [Variáveis e Tipos de Dados](1_variaveis_tipo_dados.md)
+Tipos elementares (`i`, `p`, `c`, `string`, `d`, `t`), declaração de variáveis e constantes.
 
-### 2️⃣ [Variáveis e Constantes](variaveis_constantes.md)
-Declaração com `DATA`, `CONSTANTS` e boas práticas de nomenclatura.
+### 2️⃣ [Estruturas](2_estruturas.md)
+Agrupar campos relacionados numa única entidade com `TYPES BEGIN OF` e `STRUCTURES`.
 
-### 3️⃣ [Tabelas Internas](tabelas_internas.md)
+### 3️⃣ [Condições e Lógica](3_condicoes_logica.md)
+`IF`, `CASE`, operadores lógicos e comparações.
+
+### 4️⃣ [Loops](4_loops.md)
+`LOOP AT`, `DO`, `WHILE` e como iterar sobre dados.
+
+### 5️⃣ [Expressões](5_expressoes.md)
+Expressões modernas ABAP: `VALUE`, `CORRESPONDING`, `FILTER`, operador `|...|`.
+
+### 6️⃣ [Tabelas Internas](6_tabelas_internas.md)
 Como criar, manipular e iterar sobre coleções de dados em memória.
 
-### 4️⃣ [Estruturas](estruturas.md)
-Agrupar campos relacionados numa única entidade.
-
-### 5️⃣ [Field-Symbols e Referências](field_symbols_refs.md)
-Apontadores e referências dinâmicas para dados.
-
-### 6️⃣ [Ecrãs de Seleção](select_screen_basico.md)
-Criar interfaces simples para entrada de parâmetros.
-
-### 7️⃣ [Tratamento de Exceções](excecoes_try_catch.md)
-Gerir erros de forma estruturada com `TRY...CATCH`.
-
-### 8️⃣ [Tipos Customizados](tipos_customizados.md)
-Definir tipos próprios localmente ou globalmente.
+### 7️⃣ [Orientação a Objetos Básica](7_OO_basica.md)
+Classes, objetos, métodos, atributos e encapsulamento.
 
 ---
 
@@ -49,33 +54,42 @@ Definir tipos próprios localmente ou globalmente.
 ```abap
 REPORT z_fundamentos_demo.
 
-" Declarar variáveis
+" 1. Declarar variáveis
 DATA: lv_nome  TYPE string VALUE 'Bruno',
       lv_idade TYPE i VALUE 25.
 
-" Tabela interna
+" 2. Estrutura
 TYPES: BEGIN OF ty_pessoa,
          nome  TYPE string,
          idade TYPE i,
        END OF ty_pessoa.
 
+" 3. Tabela interna
 DATA lt_pessoas TYPE TABLE OF ty_pessoa.
 
-" Adicionar dados
-APPEND VALUE #( nome = lv_nome idade = lv_idade ) TO lt_pessoas.
-APPEND VALUE #( nome = 'Ana' idade = 30 ) TO lt_pessoas.
+" 4. Adicionar dados (expressão moderna)
+lt_pessoas = VALUE #(
+  ( nome = 'Bruno' idade = 25 )
+  ( nome = 'Ana'   idade = 30 )
+  ( nome = 'João'  idade = 28 )
+).
 
-" Iterar
+" 5. Iterar com inline declaration
 LOOP AT lt_pessoas INTO DATA(ls_pessoa).
   WRITE: / |{ ls_pessoa-nome } tem { ls_pessoa-idade } anos|.
 ENDLOOP.
+
+" 6. Condição
+IF lv_idade >= 18.
+  WRITE: / 'É maior de idade'.
+ENDIF.
 ```
 
 ---
 
 ## 🚀 Próximos Passos
 
-1. Comece por [Tipos de Dados](tipos_de_dados.md)
-2. Siga a ordem numérica acima
+1. Comece por [Variáveis e Tipos de Dados](1_variaveis_tipo_dados.md)
+2. Siga a ordem numérica acima (1→7)
 3. Execute os exemplos no seu sistema SAP
 4. Depois avance para [SQL ABAP](../sql/index.md)

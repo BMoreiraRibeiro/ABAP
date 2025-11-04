@@ -1,0 +1,9 @@
+title: Jobs e Processamento Background
+nav:
+  - index.md
+  - Criar Jobs SM36: 1_criar_jobs.md
+  - Variantes: 2_variantes.md
+  - Agendamento: 3_agendamento.md
+  - Monitorização SM37: 4_monitorizacao.md
+  - Job Logs: 5_job_logs.md
+  - Processamento Batch: 6_batch_processing.md

@@ -1,1 +1,10 @@
-title: "Utilitários"
+title: Utilitários e Funções
+nav:
+  - index.md
+  - String Functions: 1_string_functions.md
+  - Data e Hora: 2_data_hora.md
+  - Conversões: 3_conversoes.md
+  - File Handling: 4_file_handling.md
+  - Mensagens: 5_mensagens.md
+  - Number Ranges: 6_number_ranges.md
+  - Locks: 7_locks.md
