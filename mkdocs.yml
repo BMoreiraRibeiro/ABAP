@@ -8,8 +8,9 @@ theme:
     - navigation.top         # botão "voltar ao topo"
     - search.suggest         # sugestões na pesquisa
     - content.code.copy      # botão copiar código
-    - toc.integrate          # índice lateral integrado
     - navigation.indexes     # permite clicar nas pastas e abrir index.md
+    - navigation.sections    # agrupa navegação em secções
+    # navigation.expand está DESATIVADO para permitir expansão manual
   palette:
     # --- Modo claro ---
     - media: "(prefers-color-scheme: light)"
