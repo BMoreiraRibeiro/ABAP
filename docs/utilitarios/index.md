@@ -20,7 +20,7 @@ Snippets, utilitários e **funções auxiliares** úteis em desenvolvimento ABAP
 
 ## 🎯 Categorias
 
-### 📅 [Datas e Horas](datas.md)
+### 📅 [Datas e Horas](2_data_hora.md)
 
 ```abap
 " Data atual
@@ -56,7 +56,7 @@ WRITE lv_hoje TO DATA(lv_data_formatada) DD/MM/YYYY.
 
 ---
 
-### 📦 [JSON](json.md)
+### 📦 JSON
 
 ```abap
 " Serializar (ABAP → JSON)
@@ -315,8 +315,10 @@ Exercícios disponíveis (serão desenvolvidos):
 
 ## 🔗 Próximos Passos
 
-1. Leia [Datas](datas.md) e [JSON](json.md)
-2. Experimente os snippets no seu sistema
-3. Crie uma biblioteca pessoal de funções reutilizáveis
-4. Pratique com `ex01.md` a `ex10.md`
-5. Partilhe snippets úteis com a equipa
+1. Explore **[Strings](1_string_functions.md)** - Manipulação de texto
+2. Domine **[Datas e Horas](2_data_hora.md)** - Cálculos temporais
+3. Aprenda **[Conversões](3_conversoes.md)** - Transformar tipos
+4. Pratique **[File Handling](4_file_handling.md)** - Upload/Download
+5. Use **[Mensagens](5_mensagens.md)** - Comunicar com usuário
+6. Implemente **[Number Ranges](6_number_ranges.md)** - Numeração automática
+7. Gerencie **[Locks](7_locks.md)** - Enqueue/Dequeue

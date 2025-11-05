@@ -1,57 +1,110 @@
 # ⏰ Jobs em Background
 
-Agendamento e execução de **programas ABAP em background**: SUBMIT, background processing, monitorização e boas práticas.
+Agendamento e execução de **programas ABAP em background**: criação de jobs, agendamento, monitorização e boas práticas.
 
 ---
 
 ## 📖 O que vais aprender
 
-- Executar programas em background
-- Usar SUBMIT para chamar reports
-- Agendar jobs periódicos (SM36)
+- Criar e agendar jobs em background
+- Usar variantes de seleção
+- Configurar agendamentos periódicos (diário, semanal, mensal)
 - Monitorizar jobs (SM37)
-- Variantes de seleção
+- Analisar logs e troubleshooting
+- Batch Input (BDC) para migração de dados
 - Jobs com dependências
-- Notificações e logs
-- Tratamento de erros em background
+- Notificações e tratamento de erros
 
 ---
 
-## 🎯 Tipos de Execução
+## 📚 Tópicos
 
-### 1️⃣ Execução Direta (Foreground)
-Executar programa na sessão atual.
+### 1️⃣ [Criar Jobs](1_criar_jobs.md)
+Como criar jobs via SM36 e programaticamente.
+
+- Job básico com JOB_OPEN e JOB_CLOSE
+- Adicionar programas com SUBMIT
+- Classes de job (A, B, C)
+- Jobs com múltiplos steps
+
+### 2️⃣ [Variantes](2_variantes.md)
+Usar variantes de seleção em jobs.
+
+- Criar variantes via SE38
+- Selection variables
+- Variantes programáticas
+- Atualizar e deletar variantes
+
+### 3️⃣ [Agendamento](3_agendamento.md)
+Opções avançadas de agendamento.
+
+- Execução imediata, data/hora específica
+- Jobs periódicos (diário, semanal, mensal)
+- Jobs dependentes (após outro job)
+- Jobs disparados por eventos
+
+### 4️⃣ [Monitorização (SM37)](4_monitorizacao.md)
+Monitorar e gerenciar jobs.
+
+- Status de jobs (Scheduled, Active, Finished, Cancelled)
+- Ver logs e spool
+- Cancelar e repetir jobs
+- Monitorização programática
+
+### 5️⃣ [Job Logs](5_job_logs.md)
+Análise de logs e troubleshooting.
+
+- Job Log vs Spool vs Application Log
+- Ler logs programaticamente
+- Debugging de jobs com erro
+- Boas práticas de logging
+
+### 6️⃣ [Batch Processing](6_batch_processing.md)
+Batch Input para migração de dados.
+
+- CALL TRANSACTION vs Session Method
+- Gravar transações com SHDB
+- Processar grande volume de dados
+- BDC em background jobs
+
+---
+
+## 🎯 Exemplo Rápido
+
+### Criar Job Simples
+
+
 
 ```abap
-SUBMIT z_meu_report AND RETURN.
-```
+DATA: lv_job_name   TYPE tbtcjob-jobname VALUE 'Z_JOB_AUTOMATICO',
+      lv_job_number TYPE tbtcjob-jobcount.
 
-### 2️⃣ Execução em Background
-Enviar para processar em segundo plano.
+" 1. Abrir job
+CALL FUNCTION 'JOB_OPEN'
+  EXPORTING
+    jobname  = lv_job_name
+  IMPORTING
+    jobcount = lv_job_number.
 
-```abap
-SUBMIT z_meu_report 
-  VIA JOB 'MEU_JOB' 
-  NUMBER lv_job_number
+" 2. Adicionar programa
+SUBMIT z_meu_report
+  WITH p_param = lv_value
+  VIA JOB lv_job_name NUMBER lv_job_number
   AND RETURN.
+
+" 3. Agendar job (imediato)
+CALL FUNCTION 'JOB_CLOSE'
+  EXPORTING
+    jobname   = lv_job_name
+    jobcount  = lv_job_number
+    strtimmed = 'X'.  " Iniciar imediatamente
+
+WRITE: / |✅ Job { lv_job_number } criado|.
 ```
-
-[Ver exemplo completo →](submit.md)
-
-### 3️⃣ Agendamento Periódico
-Job automático (diário, semanal, mensal).
-
-**Transação SM36:**
-1. Definir nome do job
-2. Adicionar step (programa)
-3. Configurar periodicidade
-4. Salvar e liberar
 
 ---
 
-## 🛠️ Ferramentas
-
-### Transações SAP
+## 🛠️ Ferramentas SAP
 
 | Transação | Descrição |
 |-----------|-----------|
@@ -59,113 +112,36 @@ Job automático (diário, semanal, mensal).
 | **SM37** | Monitorizar jobs existentes |
 | **SE38** | Criar variantes de seleção |
 | **SM35** | Batch Input sessions |
-| **SM13** | Update records |
+| **SHDB** | Gravar Batch Input |
+| **SLG1** | Application Log |
+| **ST22** | Dumps de runtime |
 
 ---
 
-## 💡 Exemplos Práticos
+## 📊 Monitorização (SM37)
 
-### [SUBMIT Básico](submit.md)
-Como executar um report de outro programa.
-
-```abap
-SUBMIT z_report
-  WITH p_carr = 'LH'
-  WITH s_date IN lt_date_range
-  VIA JOB 'PROCESSO_VOOS'
-  AND RETURN.
-```
-
-### Criar Job Programaticamente
-
-```abap
-DATA: lv_job_name   TYPE btcjob VALUE 'Z_JOB_AUTOMATICO',
-      lv_job_number TYPE btcjobcnt.
-
-" Abrir job
-CALL FUNCTION 'JOB_OPEN'
-  EXPORTING
-    jobname  = lv_job_name
-  IMPORTING
-    jobcount = lv_job_number.
-
-" Adicionar step (programa)
-SUBMIT z_meu_report
-  WITH p_param = lv_value
-  VIA JOB lv_job_name NUMBER lv_job_number
-  AND RETURN.
-
-" Fechar e agendar job
-CALL FUNCTION 'JOB_CLOSE'
-  EXPORTING
-    jobname  = lv_job_name
-    jobcount = lv_job_number
-    strtimmed = 'X'  " Iniciar imediatamente
-  EXCEPTIONS
-    OTHERS = 1.
-
-IF sy-subrc = 0.
-  WRITE: / |Job { lv_job_number } criado com sucesso|.
-ENDIF.
-```
-
-### Job com Periodicidade
-
-```abap
-" Executar todos os dias às 2h da manhã
-DATA: ls_start_date TYPE btch0000.
-
-ls_start_date-sdlstrtdt = sy-datum.
-ls_start_date-sdlstrttm = '020000'.  " 02:00:00
-
-CALL FUNCTION 'JOB_CLOSE'
-  EXPORTING
-    jobname          = lv_job_name
-    jobcount         = lv_job_number
-    sdlstrtdt        = ls_start_date-sdlstrtdt
-    sdlstrttm        = ls_start_date-sdlstrttm
-    periodic_values  = 'X'  " Job periódico
-    period_value     = '1'  " Valor
-    period_unit      = 'D'  " Unidade (D=diário, W=semanal, M=mensal)
-  EXCEPTIONS
-    OTHERS = 1.
-```
-
----
-
-## 📚 Exercícios Práticos
-
-### Exercícios Disponíveis
-- `ex01.md` → SUBMIT básico
-- `ex02.md` → Criar job programaticamente
-- `ex03.md` → Job periódico com variantes
-
----
-
-## 📊 Monitorização de Jobs
-
-### Verificar Status do Job
 
 ```abap
 DATA: lt_jobs TYPE TABLE OF tbtcjob.
 
-CALL FUNCTION 'BP_JOBLIST_READ'
+CALL FUNCTION 'BP_JOB_SELECT'
   EXPORTING
-    job_select_param = VALUE btcselect( jobname = 'Z_MEU_JOB*' )
+    jobname       = 'Z_MEU_JOB*'
+    status_finish = 'X'
   TABLES
-    job_list         = lt_jobs.
+    joblist       = lt_jobs.
 
 LOOP AT lt_jobs INTO DATA(ls_job).
   WRITE: / ls_job-jobname, ls_job-status.
 ENDLOOP.
 ```
 
-### Status possíveis:
-- **R** — Running (em execução)
-- **F** — Finished (concluído)
-- **A** — Aborted (abortado)
+**Status possíveis:**
 - **S** — Scheduled (agendado)
-- **Y** — Ready (pronto para executar)
+- **R** — Released/Ready (pronto)
+- **A** — Active (em execução)
+- **F** — Finished (concluído)
+- **X** — Cancelled (cancelado/erro)
 
 ---
 
@@ -173,66 +149,83 @@ ENDLOOP.
 
 ### ✅ Fazer
 
-1. **Usar variantes** para parâmetros complexos
-2. **Agendar fora do horário de pico** (noite/fim de semana)
-3. **Configurar notificações** em caso de erro
-4. **Logar execução** do job (SLG1 ou tabela custom)
-5. **Testar em foreground** antes de agendar
-6. **Documentar periodicidade** e dependências
+```abap
+" 1. Usar variantes para parâmetros
+SUBMIT z_report USING SELECTION-SET 'VARIANTE_PROD'.
+
+" 2. Agendar fora do horário de pico
+sdlstrttm = '020000'  " ✅ 02:00 AM
+
+" 3. Logar execução
+PERFORM log_message USING 'Job iniciado'.
+
+" 4. Testar em foreground primeiro
+SUBMIT z_report AND RETURN.  " Teste antes de job
+
+" 5. Monitorar jobs críticos
+" Criar job de monitorização que verifica outros jobs
+```
 
 ### ❌ Evitar
 
-1. Jobs de longa duração sem commit work
-2. Múltiplos jobs a processar os mesmos dados simultaneamente
-3. Jobs sem tratamento de erros
-4. Não monitorizar jobs críticos (SM37)
-5. Esquecer variantes ao transportar jobs
-
----
-
-## 🔔 Notificações
-
-### Enviar Email em Caso de Erro
-
 ```abap
-IF lv_error = abap_true.
-  " Enviar email
-  CALL FUNCTION 'SO_NEW_DOCUMENT_ATT_SEND_API1'
-    EXPORTING
-      document_data = VALUE sodocchgi1( 
-        obj_descr = 'Job falhou: Z_MEU_JOB' )
-    " ... outros parâmetros
-    TABLES
-      receivers = VALUE somlreci1_tab( 
-        ( receiver = 'user@empresa.com' rec_type = 'U' ) ).
-ENDIF.
+" 1. Jobs sem tratamento de erro
+" ❌ Sempre verificar sy-subrc e mensagens
+
+" 2. Processar tudo em foreground
+" ❌ Usar jobs para grande volume
+
+" 3. Jobs sem logging
+" ❌ Impossível troubleshooting
+
+" 4. Ignorar jobs cancelados em SM37
+" ❌ Sempre investigar causas
+
+" 5. Múltiplos jobs nos mesmos dados
+" ❌ Pode causar deadlocks
 ```
 
 ---
 
-## 💾 Variantes de Seleção
+## � Troubleshooting
 
-### Criar Variante (SE38)
-1. Executar programa
-2. Preencher parâmetros
-3. Menu: **Ir para → Variantes → Salvar como variante**
-4. Dar nome à variante
+### Job Cancelado
 
-### Usar Variante em SUBMIT
+1. **SM37** → Selecionar job → **Job Log**
+2. **ST22** → Verificar dumps
+3. Re-executar em foreground com debug
 
-```abap
-SUBMIT z_meu_report
-  USING SELECTION-SET 'VARIANTE_PRODUCAO'
-  VIA JOB 'PROCESSO_NOTURNO'
-  AND RETURN.
-```
+### Job Lento
+
+1. **SM37** → Ver tempo de execução
+2. **ST12** → Analisar performance
+3. Otimizar SELECTs e loops
+
+### Job Não Inicia
+
+1. Verificar status (deve ser **Released**)
+2. **RZ04** → Verificar processos background disponíveis
+3. Liberar manualmente se necessário
 
 ---
 
-## 🚀 Próximos Passos
+## � Próximos Passos
 
-1. Leia [SUBMIT](submit.md)
-2. Experimente criar um job simples (SM36)
-3. Pratique com `ex01.md` a `ex03.md`
-4. Configure monitorização para jobs críticos
-5. Explore [Integrações](../integracoes/index.md) para processar dados externos em background
+Explore os tópicos detalhados:
+
+1. **[Criar Jobs](1_criar_jobs.md)** - Aprenda a criar jobs via SM36 e código
+2. **[Variantes](2_variantes.md)** - Configure parâmetros com variantes
+3. **[Agendamento](3_agendamento.md)** - Agende execuções periódicas
+4. **[Monitorização](4_monitorizacao.md)** - Monitore jobs em SM37
+5. **[Job Logs](5_job_logs.md)** - Analise logs e faça troubleshooting
+6. **[Batch Processing](6_batch_processing.md)** - Migre dados com BDC
+
+---
+
+**Relacionado:**
+- [Performance](../performance/index.md) - Otimize jobs lentos
+- [Integrações](../integracoes/index.md) - Processe dados externos em background
+
+---
+
+**Tags:** `#Jobs` `#Background` `#SM36` `#SM37` `#Agendamento` `#BDC`

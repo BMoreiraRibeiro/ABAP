@@ -31,7 +31,7 @@ Conjunto de autorizações atribuídas a um utilizador
 
 ## 🔑 AUTHORITY-CHECK
 
-### [Verificação Básica](authority_check.md)
+### [Verificação Básica](2_authority_check.md)
 
 ```abap
 AUTHORITY-CHECK OBJECT 'S_TCODE'
@@ -241,9 +241,9 @@ Exercícios disponíveis (serão desenvolvidos):
 
 ## 🔗 Próximos Passos
 
-1. Leia [Authority Check](authority_check.md)
-2. Execute **SU53** após um erro de autorização
-3. Crie um objeto Z* custom em SU21
-4. Configure um role em PFCG
-5. Implemente logging de tentativas falhadas
-6. Explore [Performance](../performance/index.md) para otimizar verificações
+1. Leia **[Autorizações](1_autorizacoes.md)** - Entender sistema de autorizações
+2. Pratique **[Authority Check](2_authority_check.md)** - Implementar verificações
+3. Configure **[Roles e Perfis](3_roles_perfis.md)** - Gestão em PFCG
+4. Estude **[S_DEVELOP](4_s_develop.md)** - Proteger desenvolvimento
+5. Aplique **[Práticas Seguras](5_praticas_seguras.md)** - Segurança no código
+6. Previna **[SQL Injection](6_sql_injection.md)** - Proteger contra ataques

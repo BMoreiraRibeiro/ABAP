@@ -229,8 +229,8 @@ ENDIF.
 - SAP IDoc Documentation
 
 ### Tutoriais Práticos
-- [RFC Configuration Guide](1_rfc.md#configuração-de-destinos-rfc-sm59)
-- [BAPI Best Practices](2_bapi.md#boas-práticas)
+- [RFC Configuration Guide](1_rfc.md#configuracao-de-destinos-rfc-sm59)
+- [BAPI Best Practices](2_bapi.md#boas-praticas)
 - [OData Service Creation](3_odata.md#criar-odata-service-v2)
 - [REST API Development](7_rest_api.md#criar-rest-api-provider)
 
