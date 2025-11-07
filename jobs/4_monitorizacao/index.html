@@ -1,0 +1,4336 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bmoreiraribeiro.github.io/ABAP/jobs/4_monitorizacao/">
+      
+      
+        <link rel="prev" href="../3_agendamento/">
+      
+      
+        <link rel="next" href="../5_job_logs/">
+      
+      
+      <link rel="icon" href="../../assets/images/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Monitorização SM37 - Almanaque ABAP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#monitorizacao-de-jobs-sm37" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Almanaque ABAP" class="md-header__button md-logo" aria-label="Almanaque ABAP" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Almanaque ABAP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Monitorização SM37
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Almanaque ABAP" class="md-nav__button md-logo" aria-label="Almanaque ABAP" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    Almanaque ABAP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Almanaque ABAP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../fundamentos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Fundamentos ABAP
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentos ABAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/1_variaveis_tipo_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Variáveis e Tipos de Dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/2_estruturas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Estruturas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/3_condicoes_logica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Condições e Lógica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/4_loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Loops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/5_expressoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Expressões
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/6_tabelas_internas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tabelas Internas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/7_OO_basica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orientação a Objetos Básica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/8_nomenclaturas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nomenclaturas e Convenções
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sql/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    SQL ABAP
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            SQL ABAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/1_select_basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SELECT Básico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/2_joins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JOINs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/3_agregacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agregações e GROUP BY
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/4_insert_update_delete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    INSERT UPDATE DELETE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/5_where_dinamico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WHERE Dinâmico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/6_otimizacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Otimizações SQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cds/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CDS Views
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            CDS Views
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/1_introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introdução
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/2_joins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JOINs e Associações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/3_anotacoes_metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Anotações e Metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/4_funcoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções e Expressões
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/5_parametros_filtros_views_param/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Parâmetros e Views Parametrizadas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../objetos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Programação Orientada a Objetos
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Programação Orientada a Objetos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/1_classes_objetos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Classes e Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/2_atributos_metodos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Atributos e Métodos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/3_construtores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Construtores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/4_interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/5_heranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Herança
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/6_polimorfismo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Polimorfismo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/7_factory_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Factory Pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/8_singleton/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Singleton Pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../alvs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Tipos de ALV
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tipos de ALV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_classico_grid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Clássico Grid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_classico_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Clássico List
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_oo_salv_table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV OO SALV_TABLE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_oo_gui_grid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV OO GUI Grid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_tree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Tree
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_popup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Popup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_editavel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Editável
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_eventos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV com Eventos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_botoes_custom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Botões Custom
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_layout_variantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Layout/Variantes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_selecao_valores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Seleção de Valores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../debug/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Debug e Análise
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Debug e Análise
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/1_breakpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Breakpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/2_watchpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Watchpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/3_debugger/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debugger Clássico vs Novo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/4_st22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Análise de Dumps ST22
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/5_sat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Runtime Analysis SAT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/6_debug_jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debug de Jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../performance/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Performance e Boas Práticas
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Performance e Boas Práticas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/1_for_all_entries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FOR ALL ENTRIES
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/2_indices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Índices de BD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/3_runtime_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Runtime Analysis SAT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/4_buffering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table Buffering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/5_tabelas_internas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tabelas Internas Eficientes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/6_armadilhas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Armadilhas Comuns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../integracoes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Integrações
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Integrações
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/1_rfc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC Remote Function Call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/2_bapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/3_odata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OData Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/4_http_client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Client
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/5_web_services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web Services SOAP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/6_idocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/7_rest_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API RESTful
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Jobs e Processamento Background
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Jobs e Processamento Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_criar_jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Criar Jobs SM36
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_variantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Variantes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_agendamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agendamento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Monitorização SM37
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitorização SM37
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Visão Geral
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acessar-sm37" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Acessar SM37
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-de-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Status de Jobs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operacoes-em-sm37" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Operações em SM37
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Operações em SM37">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ver-log-do-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ver Log do Job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ver-spool-de-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ver Spool de Output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancelar-job-ativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cancelar Job Ativo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repetir-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repetir Job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletar-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deletar Job
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtros-uteis" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Filtros Úteis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Filtros Úteis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jobs-de-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jobs de Hoje
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobs-agendados-futuros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jobs Agendados Futuros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobs-com-erro-ultimos-7-dias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jobs com Erro (últimos 7 dias)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorizacao-programatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Monitorização Programática
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Monitorização Programática">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificar-status-de-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificar Status de Job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listar-jobs-em-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listar Jobs em Execução
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obter-log-de-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obter Log de Job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancelar-job-programaticamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cancelar Job Programaticamente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorizacao-automatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔔 Monitorização Automática
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔔 Monitorização Automática">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criar-monitor-de-jobs-criticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criar Monitor de Jobs Críticos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analise-de-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Análise de Performance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Análise de Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jobs-mais-longos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jobs Mais Longos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boas-praticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚡ Boas Práticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚡ Boas Práticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fazer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Fazer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evitar" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Evitar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-preso-em-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job Preso em "Ready"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-cancelado-sem-mensagem-clara" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job Cancelado sem Mensagem Clara
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-nao-inicia-no-horario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job Não Inicia no Horário
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Próximos Passos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_job_logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Job Logs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_batch_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Processamento Batch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../testes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Testes Unitários
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Testes Unitários
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/1_abap_unit_basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ABAP Unit Básico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/2_test_fixtures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Fixtures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/3_assertions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assertions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/4_test_doubles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Doubles e Mocking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/5_injecao_dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Injeção de Dependências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/6_code_coverage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cobertura de Código
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/7_tdd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TDD Test Driven Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Segurança
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Segurança
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/1_autorizacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Autorizações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/2_authority_check/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AUTHORITY-CHECK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/3_roles_perfis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roles e Perfis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/4_s_develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Objeto S_DEVELOP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/5_praticas_seguras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Práticas Seguras
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/6_sql_injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SQL Injection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../utilitarios/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Utilitários e Funções
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Utilitários e Funções
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/1_string_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    String Functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/2_data_hora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data e Hora
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/3_conversoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conversões
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/4_file_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    File Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/5_mensagens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mensagens
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/6_number_ranges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Number Ranges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/7_locks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Locks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cds_amdp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CDS & AMDP Avançado
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            CDS & AMDP Avançado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../meus_programas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Meus Programas
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Meus Programas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meus_programas/ZCL_UTIL_EXCEL_Documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Classe Manipulação de Ficheiros Excel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Visão Geral
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acessar-sm37" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Acessar SM37
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-de-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Status de Jobs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operacoes-em-sm37" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Operações em SM37
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Operações em SM37">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ver-log-do-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ver Log do Job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ver-spool-de-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ver Spool de Output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancelar-job-ativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cancelar Job Ativo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repetir-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repetir Job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletar-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deletar Job
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtros-uteis" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Filtros Úteis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Filtros Úteis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jobs-de-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jobs de Hoje
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobs-agendados-futuros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jobs Agendados Futuros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobs-com-erro-ultimos-7-dias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jobs com Erro (últimos 7 dias)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorizacao-programatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Monitorização Programática
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Monitorização Programática">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificar-status-de-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificar Status de Job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listar-jobs-em-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listar Jobs em Execução
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obter-log-de-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obter Log de Job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancelar-job-programaticamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cancelar Job Programaticamente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorizacao-automatica" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔔 Monitorização Automática
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔔 Monitorização Automática">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criar-monitor-de-jobs-criticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criar Monitor de Jobs Críticos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analise-de-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Análise de Performance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Análise de Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jobs-mais-longos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jobs Mais Longos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boas-praticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚡ Boas Práticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚡ Boas Práticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fazer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Fazer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evitar" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Evitar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#job-preso-em-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job Preso em "Ready"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-cancelado-sem-mensagem-clara" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job Cancelado sem Mensagem Clara
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job-nao-inicia-no-horario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job Não Inicia no Horário
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Próximos Passos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="monitorizacao-de-jobs-sm37">Monitorização de Jobs (SM37)</h1>
+<h2 id="visao-geral">📋 Visão Geral</h2>
+<p><strong>SM37</strong> é a transação para <strong>monitorar</strong> jobs em background - verificar status, logs, erros e histórico.</p>
+<hr />
+<h2 id="acessar-sm37">🔍 Acessar SM37</h2>
+<ol>
+<li><strong>Executar transação:</strong> <code>/nSM37</code></li>
+<li><strong>Filtros principais:</strong></li>
+<li><strong>Job Name:</strong> Nome do job (wildcards <code>*</code> permitidos)</li>
+<li><strong>User:</strong> Usuário que criou</li>
+<li><strong>Start Date:</strong> Período de execução</li>
+<li><strong>Status:</strong> Scheduled, Released, Ready, Active, Finished, Cancelled</li>
+</ol>
+<hr />
+<h2 id="status-de-jobs">📊 Status de Jobs</h2>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Significado</th>
+<th>Ação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scheduled</strong></td>
+<td>Agendado, aguardando horário</td>
+<td>⏳ Aguardar</td>
+</tr>
+<tr>
+<td><strong>Released</strong></td>
+<td>Liberado para execução</td>
+<td>🟢 Normal</td>
+</tr>
+<tr>
+<td><strong>Ready</strong></td>
+<td>Pronto, aguardando server disponível</td>
+<td>🟡 Verificar carga</td>
+</tr>
+<tr>
+<td><strong>Active</strong></td>
+<td>Executando agora</td>
+<td>⚡ Em progresso</td>
+</tr>
+<tr>
+<td><strong>Finished</strong></td>
+<td>Concluído com sucesso</td>
+<td>✅ OK</td>
+</tr>
+<tr>
+<td><strong>Cancelled</strong></td>
+<td>Cancelado/Com erro</td>
+<td>❌ Ver log</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="operacoes-em-sm37">🛠️ Operações em SM37</h2>
+<h3 id="ver-log-do-job">Ver Log do Job</h3>
+<ol>
+<li>Selecionar job</li>
+<li><strong>Job → Job Log</strong> (ou <code>F9</code>)</li>
+</ol>
+<p><strong>Verificar:</strong>
+- ✅ Mensagens de sucesso
+- ⚠️ Warnings
+- ❌ Erros críticos</p>
+<hr />
+<h3 id="ver-spool-de-output">Ver Spool de Output</h3>
+<ol>
+<li>Selecionar job</li>
+<li><strong>Job → Spool list</strong> (ou <code>Shift+F7</code>)</li>
+</ol>
+<p><strong>Ver impressões/outputs:</strong>
+- Relatórios gerados
+- Listas de dados
+- Arquivos exportados</p>
+<hr />
+<h3 id="cancelar-job-ativo">Cancelar Job Ativo</h3>
+<div class="highlight"><pre><span></span><code>1. Selecionar job Active
+2. Job → Cancel Active Job
+3. Confirmar
+</code></pre></div>
+<p>⚠️ <strong>Cuidado:</strong> Cancela imediatamente, pode deixar dados inconsistentes!</p>
+<hr />
+<h3 id="repetir-job">Repetir Job</h3>
+<div class="highlight"><pre><span></span><code>1. Selecionar job Finished
+2. Job → Copy to reschedule
+3. Ajustar agendamento se necessário
+4. Salvar
+</code></pre></div>
+<hr />
+<h3 id="deletar-job">Deletar Job</h3>
+<div class="highlight"><pre><span></span><code>1. Selecionar job Scheduled ou Cancelled
+2. Job → Delete
+3. Confirmar
+</code></pre></div>
+<p>❌ <strong>Não pode deletar jobs:</strong> Active ou Released</p>
+<hr />
+<h2 id="filtros-uteis">📋 Filtros Úteis</h2>
+<h3 id="jobs-de-hoje">Jobs de Hoje</h3>
+<div class="highlight"><pre><span></span><code>Job Name: *
+User: &lt;seu usuário&gt;
+Start Date: &lt;data atual&gt;
+Status: Finished + Cancelled
+</code></pre></div>
+<hr />
+<h3 id="jobs-agendados-futuros">Jobs Agendados Futuros</h3>
+<div class="highlight"><pre><span></span><code>Job Name: Z*
+Status: Scheduled
+Start Date: &lt;hoje até futuro&gt;
+</code></pre></div>
+<hr />
+<h3 id="jobs-com-erro-ultimos-7-dias">Jobs com Erro (últimos 7 dias)</h3>
+<div class="highlight"><pre><span></span><code>Job Name: *
+Status: Cancelled
+Start Date: &lt;-7 dias até hoje&gt;
+</code></pre></div>
+<hr />
+<h2 id="monitorizacao-programatica">💡 Monitorização Programática</h2>
+<h3 id="verificar-status-de-job">Verificar Status de Job</h3>
+<div class="highlight"><pre><span></span><code><span class="k">REPORT</span><span class="w"> </span><span class="nv">z_check_job_status</span><span class="p">.</span>
+
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lv_job_name</span><span class="w">   </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="o">-</span><span class="nv">jobname</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="s1">&#39;Z_MY_JOB&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">lv_job_number</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="o">-</span><span class="nv">jobcount</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="s1">&#39;12345678&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">lt_jobs</span><span class="w">       </span><span class="k">TYPE TABLE OF</span><span class="w"> </span><span class="nv">tbtcjob</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_job</span><span class="w">        </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="p">.</span>
+
+<span class="k">CALL FUNCTION</span><span class="w"> </span><span class="s1">&#39;BP_JOB_SELECT&#39;</span>
+<span class="w">  </span><span class="k">EXPORTING</span>
+<span class="w">    </span><span class="nv">jobname</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">lv_job_name</span>
+<span class="w">    </span><span class="nv">jobcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">lv_job_number</span>
+<span class="w">  </span><span class="k">TABLES</span>
+<span class="w">    </span><span class="nv">joblist</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="p">.</span>
+
+<span class="k">READ</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="nv">ls_job</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span>
+
+<span class="k">IF</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">subrc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span>
+<span class="w">  </span><span class="k">CASE</span><span class="w"> </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">status</span><span class="p">.</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;S&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; Scheduled</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;⏳ Job agendado&#39;</span><span class="p">.</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;R&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; Released/Ready</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;🟢 Job liberado&#39;</span><span class="p">.</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; Active</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;⚡ Job executando&#39;</span><span class="p">.</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;F&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; Finished</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;✅ Job concluído&#39;</span><span class="p">.</span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="s1">&#39;X&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; Cancelled</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;❌ Job cancelado/erro&#39;</span><span class="p">.</span>
+<span class="w">  </span><span class="k">ENDCASE</span><span class="p">.</span>
+<span class="k">ENDIF</span><span class="p">.</span>
+</code></pre></div>
+<hr />
+<h3 id="listar-jobs-em-execucao">Listar Jobs em Execução</h3>
+<div class="highlight"><pre><span></span><code><span class="k">REPORT</span><span class="w"> </span><span class="nv">z_list_active_jobs</span><span class="p">.</span>
+
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="w"> </span><span class="k">TYPE TABLE OF</span><span class="w"> </span><span class="nv">tbtcjob</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_job</span><span class="w">  </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="p">.</span>
+
+<span class="k">CALL FUNCTION</span><span class="w"> </span><span class="s1">&#39;BP_JOB_SELECT&#39;</span>
+<span class="w">  </span><span class="k">EXPORTING</span>
+<span class="w">    </span><span class="nv">status_active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;X&#39;</span>
+<span class="w">  </span><span class="k">TABLES</span>
+<span class="w">    </span><span class="nv">joblist</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="p">.</span>
+
+<span class="k">LOOP AT </span><span class="nv">lt_jobs</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="nv">ls_job</span><span class="p">.</span>
+<span class="w">  </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">jobname</span><span class="p">,</span><span class="w"> </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">jobcount</span><span class="p">,</span><span class="w"> </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">sdlstrtdt</span><span class="p">,</span><span class="w"> </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">sdlstrttm</span><span class="p">.</span>
+<span class="k">ENDLOOP</span><span class="p">.</span>
+
+<span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Total: </span><span class="p">{</span><span class="w"> </span><span class="k">lines</span><span class="p">(</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="s1"> jobs ativos</span><span class="p">|.</span>
+</code></pre></div>
+<hr />
+<h3 id="obter-log-de-job">Obter Log de Job</h3>
+<div class="highlight"><pre><span></span><code><span class="k">REPORT</span><span class="w"> </span><span class="nv">z_get_job_log</span><span class="p">.</span>
+
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lv_job_name</span><span class="w">   </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="o">-</span><span class="nv">jobname</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="s1">&#39;Z_MY_JOB&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">lv_job_number</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="o">-</span><span class="nv">jobcount</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="s1">&#39;12345678&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">lt_log</span><span class="w">        </span><span class="k">TYPE TABLE OF</span><span class="w"> </span><span class="nv">tbtc7</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_log</span><span class="w">        </span><span class="k">TYPE </span><span class="nv">tbtc7</span><span class="p">.</span>
+
+<span class="k">CALL FUNCTION</span><span class="w"> </span><span class="s1">&#39;BP_JOBLOG_READ&#39;</span>
+<span class="w">  </span><span class="k">EXPORTING</span>
+<span class="w">    </span><span class="nv">jobname</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">lv_job_name</span>
+<span class="w">    </span><span class="nv">jobcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">lv_job_number</span>
+<span class="w">  </span><span class="k">TABLES</span>
+<span class="w">    </span><span class="nv">joblog</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">lt_log</span><span class="p">.</span>
+
+<span class="k">LOOP AT </span><span class="nv">lt_log</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="nv">ls_log</span><span class="p">.</span>
+<span class="w">  </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="nv">ls_log</span><span class="o">-</span><span class="nv">logtext</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; Mensagem do log</span>
+<span class="k">ENDLOOP</span><span class="p">.</span>
+</code></pre></div>
+<hr />
+<h3 id="cancelar-job-programaticamente">Cancelar Job Programaticamente</h3>
+<div class="highlight"><pre><span></span><code><span class="k">REPORT</span><span class="w"> </span><span class="nv">z_cancel_job</span><span class="p">.</span>
+
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lv_job_name</span><span class="w">   </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="o">-</span><span class="nv">jobname</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="s1">&#39;Z_MY_JOB&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">lv_job_number</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="o">-</span><span class="nv">jobcount</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="s1">&#39;12345678&#39;</span><span class="p">.</span>
+
+<span class="k">CALL FUNCTION</span><span class="w"> </span><span class="s1">&#39;BP_JOB_ABORT&#39;</span>
+<span class="w">  </span><span class="k">EXPORTING</span>
+<span class="w">    </span><span class="nv">jobname</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">lv_job_name</span>
+<span class="w">    </span><span class="nv">jobcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">lv_job_number</span>
+<span class="w">  </span><span class="k">EXCEPTIONS</span>
+<span class="w">    </span><span class="k">OTHERS</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span>
+
+<span class="k">IF</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">subrc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span>
+<span class="w">  </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;✅ Job cancelado&#39;</span><span class="p">.</span>
+<span class="k">ELSE</span><span class="p">.</span>
+<span class="w">  </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;❌ Erro ao cancelar job&#39;</span><span class="p">.</span>
+<span class="k">ENDIF</span><span class="p">.</span>
+</code></pre></div>
+<hr />
+<h2 id="monitorizacao-automatica">🔔 Monitorização Automática</h2>
+<h3 id="criar-monitor-de-jobs-criticos">Criar Monitor de Jobs Críticos</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">*&amp;---------------------------------------------------------------------*</span>
+<span class="c1">*&amp; Report Z_MONITOR_CRITICAL_JOBS</span>
+<span class="c1">*&amp; Verifica jobs críticos e envia alerta se houver falhas</span>
+<span class="c1">*&amp;---------------------------------------------------------------------*</span>
+<span class="k">REPORT</span><span class="w"> </span><span class="nv">z_monitor_critical_jobs</span><span class="p">.</span>
+
+<span class="k">TYPES</span><span class="p">:</span><span class="w"> </span><span class="k">BEGIN OF</span><span class="w"> </span><span class="nv">ty_critical_job</span><span class="p">,</span>
+<span class="w">         </span><span class="nv">jobname</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="o">-</span><span class="nv">jobname</span><span class="p">,</span>
+<span class="w">         </span><span class="nv">descr</span><span class="w">   </span><span class="k">TYPE </span><span class="nv">char50</span><span class="p">,</span>
+<span class="w">       </span><span class="k">END OF</span><span class="w"> </span><span class="nv">ty_critical_job</span><span class="p">.</span>
+
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lt_critical</span><span class="w"> </span><span class="k">TYPE TABLE OF</span><span class="w"> </span><span class="nv">ty_critical_job</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_critical</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">ty_critical_job</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">lt_jobs</span><span class="w">     </span><span class="k">TYPE TABLE OF</span><span class="w"> </span><span class="nv">tbtcjob</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_job</span><span class="w">      </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">lv_has_errors</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">abap_bool</span><span class="p">.</span>
+
+<span class="c1">&quot; Definir jobs críticos a monitorar</span>
+<span class="nv">lt_critical</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="err">#</span><span class="p">(</span>
+<span class="w">  </span><span class="p">(</span><span class="w"> </span><span class="nv">jobname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Z_DAILY_BACKUP&#39;</span><span class="w">    </span><span class="nv">descr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Backup Diário&#39;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="w"> </span><span class="nv">jobname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Z_SYNC_CUSTOMERS&#39;</span><span class="w">  </span><span class="nv">descr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Sincronização Clientes&#39;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="w"> </span><span class="nv">jobname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Z_INVOICE_PROCESS&#39;</span><span class="w"> </span><span class="nv">descr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Processamento Faturas&#39;</span><span class="w"> </span><span class="p">)</span>
+<span class="p">).</span>
+
+<span class="k">LOOP AT </span><span class="nv">lt_critical</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="nv">ls_critical</span><span class="p">.</span>
+
+<span class="w">  </span><span class="k">CLEAR</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="p">.</span>
+
+<span class="w">  </span><span class="c1">&quot; Buscar execuções das últimas 24h</span>
+<span class="w">  </span><span class="k">CALL FUNCTION</span><span class="w"> </span><span class="s1">&#39;BP_JOB_SELECT&#39;</span>
+<span class="w">    </span><span class="k">EXPORTING</span>
+<span class="w">      </span><span class="nv">jobname</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">ls_critical</span><span class="o">-</span><span class="nv">jobname</span>
+<span class="w">      </span><span class="nv">from_date</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">datum</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="nv">to_date</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">datum</span>
+<span class="w">      </span><span class="nv">status_finish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;X&#39;</span>
+<span class="w">      </span><span class="nv">status_abort</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;X&#39;</span>
+<span class="w">    </span><span class="k">TABLES</span>
+<span class="w">      </span><span class="nv">joblist</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="p">.</span>
+
+<span class="w">  </span><span class="c1">&quot; Verificar se houve falhas</span>
+<span class="w">  </span><span class="k">READ</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="w"> </span><span class="k">TRANSPORTING NO FIELDS</span>
+<span class="w">    </span><span class="k">WITH</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="nv">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;X&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; Cancelled</span>
+
+<span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">subrc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span>
+<span class="w">    </span><span class="nv">lv_has_errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">abap_true</span><span class="p">.</span>
+<span class="w">    </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">❌ ERRO: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_critical</span><span class="o">-</span><span class="nv">descr</span><span class="w"> </span><span class="p">}</span><span class="s1"> (</span><span class="p">{</span><span class="w"> </span><span class="nv">ls_critical</span><span class="o">-</span><span class="nv">jobname</span><span class="w"> </span><span class="p">}</span><span class="s1">)</span><span class="p">|.</span>
+<span class="w">  </span><span class="k">ELSE</span><span class="p">.</span>
+<span class="w">    </span><span class="k">READ</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="w"> </span><span class="k">TRANSPORTING NO FIELDS</span>
+<span class="w">      </span><span class="k">WITH</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="nv">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;F&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; Finished</span>
+
+<span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">subrc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">✅ OK: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_critical</span><span class="o">-</span><span class="nv">descr</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">    </span><span class="k">ELSE</span><span class="p">.</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">⚠️ AVISO: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_critical</span><span class="o">-</span><span class="nv">descr</span><span class="w"> </span><span class="p">}</span><span class="s1"> não executou nas últimas 24h</span><span class="p">|.</span>
+<span class="w">    </span><span class="k">ENDIF</span><span class="p">.</span>
+<span class="w">  </span><span class="k">ENDIF</span><span class="p">.</span>
+
+<span class="k">ENDLOOP</span><span class="p">.</span>
+
+<span class="k">IF</span><span class="w"> </span><span class="nv">lv_has_errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">abap_true</span><span class="p">.</span>
+<span class="w">  </span><span class="c1">&quot; Enviar e-mail de alerta (implementação omitida)</span>
+<span class="w">  </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;📧 Alerta enviado aos administradores&#39;</span><span class="p">.</span>
+<span class="k">ENDIF</span><span class="p">.</span>
+</code></pre></div>
+<hr />
+<h2 id="analise-de-performance">📈 Análise de Performance</h2>
+<h3 id="jobs-mais-longos">Jobs Mais Longos</h3>
+<div class="highlight"><pre><span></span><code><span class="k">REPORT</span><span class="w"> </span><span class="nv">z_longest_jobs</span><span class="p">.</span>
+
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="w"> </span><span class="k">TYPE TABLE OF</span><span class="w"> </span><span class="nv">tbtcjob</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_job</span><span class="w">  </span><span class="k">TYPE </span><span class="nv">tbtcjob</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">lv_duration</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">i</span><span class="p">.</span>
+
+<span class="k">CALL FUNCTION</span><span class="w"> </span><span class="s1">&#39;BP_JOB_SELECT&#39;</span>
+<span class="w">  </span><span class="k">EXPORTING</span>
+<span class="w">    </span><span class="nv">from_date</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">datum</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">7</span>
+<span class="w">    </span><span class="nv">to_date</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">datum</span>
+<span class="w">    </span><span class="nv">status_finish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;X&#39;</span>
+<span class="w">  </span><span class="k">TABLES</span>
+<span class="w">    </span><span class="nv">joblist</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">lt_jobs</span><span class="p">.</span>
+
+<span class="k">LOOP AT </span><span class="nv">lt_jobs</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="nv">ls_job</span><span class="p">.</span>
+
+<span class="w">  </span><span class="c1">&quot; Calcular duração</span>
+<span class="w">  </span><span class="nv">lv_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">enddate</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">sdlstrtdt</span><span class="p">.</span>
+<span class="w">  </span><span class="nv">lv_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">lv_duration</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">86400</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="c1">&quot; Dias em segundos</span>
+<span class="w">                </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">endtime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">sdlstrttm</span><span class="p">.</span>
+
+<span class="w">  </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">jobname</span><span class="p">,</span>
+<span class="w">           </span><span class="nv">ls_job</span><span class="o">-</span><span class="nv">jobcount</span><span class="p">,</span>
+<span class="w">           </span><span class="nv">lv_duration</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;segundos&#39;</span><span class="p">.</span>
+
+<span class="k">ENDLOOP</span><span class="p">.</span>
+
+<span class="c1">&quot; Ordenar por duração (implementação simplificada)</span>
+</code></pre></div>
+<hr />
+<h2 id="boas-praticas">⚡ Boas Práticas</h2>
+<h3 id="fazer">✅ Fazer</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">&quot; 1. Monitorar regularmente jobs críticos</span>
+<span class="c1">&quot; Criar job de monitorização que executa a cada hora</span>
+
+<span class="c1">&quot; 2. Analisar logs de jobs com erro</span>
+<span class="c1">&quot; Sempre verificar Job Log em SM37</span>
+
+<span class="c1">&quot; 3. Manter histórico limitado</span>
+<span class="c1">&quot; Configurar retenção de logs em SM36</span>
+
+<span class="c1">&quot; 4. Alertas automáticos</span>
+<span class="c1">&quot; Implementar notificações para falhas críticas</span>
+
+<span class="c1">&quot; 5. Documentar jobs importantes</span>
+<span class="c1">&quot; Manter lista de jobs críticos e responsáveis</span>
+</code></pre></div>
+<h3 id="evitar">❌ Evitar</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">&quot; 1. Ignorar jobs cancelados</span>
+<span class="c1">&quot; ❌ Sempre investigar causas</span>
+
+<span class="c1">&quot; 2. Deletar jobs sem análise</span>
+<span class="c1">&quot; ❌ Verificar log antes de deletar</span>
+
+<span class="c1">&quot; 3. Cancelar jobs sem necessidade</span>
+<span class="c1">&quot; ❌ Pode causar inconsistências</span>
+
+<span class="c1">&quot; 4. Sobrecarregar com filtros amplos</span>
+<span class="c1">&quot; ❌ Usar filtros específicos em SM37</span>
+
+<span class="c1">&quot; 5. Não monitorar jobs periódicos</span>
+<span class="c1">&quot; ❌ Verificar execuções regulares</span>
+</code></pre></div>
+<hr />
+<h2 id="troubleshooting">🔧 Troubleshooting</h2>
+<h3 id="job-preso-em-ready">Job Preso em "Ready"</h3>
+<p><strong>Causa:</strong> Sem servidores background disponíveis</p>
+<p><strong>Solução:</strong>
+1. SM50 - Verificar processos ativos
+2. SM51 - Verificar servidores disponíveis
+3. RZ04 - Configurar mais processos background
+4. Ou aguardar liberação de recursos</p>
+<hr />
+<h3 id="job-cancelado-sem-mensagem-clara">Job Cancelado sem Mensagem Clara</h3>
+<p><strong>Causa:</strong> Dump, timeout, ou kill manual</p>
+<p><strong>Solução:</strong>
+1. SM37 → Ver Job Log
+2. ST22 → Verificar dumps do usuário do job
+3. SM21 → System Log para eventos do sistema</p>
+<hr />
+<h3 id="job-nao-inicia-no-horario">Job Não Inicia no Horário</h3>
+<p><strong>Causa:</strong> Scheduled mas não Released</p>
+<p><strong>Solução:</strong>
+<div class="highlight"><pre><span></span><code>1. SM37 → Selecionar job
+2. Verificar Status (deve ser Released, não Scheduled)
+3. Job → Release para liberar manualmente
+</code></pre></div></p>
+<hr />
+<h2 id="proximos-passos">🔗 Próximos Passos</h2>
+<ul>
+<li><strong><a href="../1_criar_jobs/">Criar Jobs</a></strong> - Criar novos jobs</li>
+<li><strong><a href="../3_agendamento/">Agendamento</a></strong> - Agendar execuções</li>
+<li><strong><a href="../5_job_logs/">Job Logs</a></strong> - Análise detalhada de logs</li>
+</ul>
+<hr />
+<p><strong>Tags:</strong> <code>#SM37</code> <code>#Monitorização</code> <code>#Jobs</code> <code>#Troubleshooting</code></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

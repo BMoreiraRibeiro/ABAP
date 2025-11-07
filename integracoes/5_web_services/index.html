@@ -1,0 +1,4760 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bmoreiraribeiro.github.io/ABAP/integracoes/5_web_services/">
+      
+      
+        <link rel="prev" href="../4_http_client/">
+      
+      
+        <link rel="next" href="../6_idocs/">
+      
+      
+      <link rel="icon" href="../../assets/images/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Web Services SOAP - Almanaque ABAP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#web-services-soap" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Almanaque ABAP" class="md-header__button md-logo" aria-label="Almanaque ABAP" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Almanaque ABAP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Web Services SOAP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Almanaque ABAP" class="md-nav__button md-logo" aria-label="Almanaque ABAP" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    Almanaque ABAP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Almanaque ABAP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../fundamentos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Fundamentos ABAP
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentos ABAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/1_variaveis_tipo_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Variáveis e Tipos de Dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/2_estruturas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Estruturas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/3_condicoes_logica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Condições e Lógica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/4_loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Loops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/5_expressoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Expressões
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/6_tabelas_internas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tabelas Internas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/7_OO_basica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orientação a Objetos Básica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentos/8_nomenclaturas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nomenclaturas e Convenções
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sql/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    SQL ABAP
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            SQL ABAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/1_select_basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SELECT Básico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/2_joins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JOINs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/3_agregacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agregações e GROUP BY
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/4_insert_update_delete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    INSERT UPDATE DELETE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/5_where_dinamico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WHERE Dinâmico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/6_otimizacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Otimizações SQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cds/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CDS Views
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            CDS Views
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/1_introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introdução
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/2_joins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JOINs e Associações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/3_anotacoes_metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Anotações e Metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/4_funcoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções e Expressões
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/5_parametros_filtros_views_param/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Parâmetros e Views Parametrizadas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../objetos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Programação Orientada a Objetos
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Programação Orientada a Objetos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/1_classes_objetos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Classes e Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/2_atributos_metodos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Atributos e Métodos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/3_construtores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Construtores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/4_interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/5_heranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Herança
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/6_polimorfismo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Polimorfismo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/7_factory_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Factory Pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/8_singleton/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Singleton Pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../alvs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Tipos de ALV
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tipos de ALV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_classico_grid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Clássico Grid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_classico_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Clássico List
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_oo_salv_table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV OO SALV_TABLE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_oo_gui_grid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV OO GUI Grid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_tree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Tree
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_popup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Popup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_editavel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Editável
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_eventos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV com Eventos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_botoes_custom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Botões Custom
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_layout_variantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Layout/Variantes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_selecao_valores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Seleção de Valores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../debug/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Debug e Análise
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Debug e Análise
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/1_breakpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Breakpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/2_watchpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Watchpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/3_debugger/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debugger Clássico vs Novo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/4_st22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Análise de Dumps ST22
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/5_sat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Runtime Analysis SAT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/6_debug_jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debug de Jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../performance/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Performance e Boas Práticas
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Performance e Boas Práticas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/1_for_all_entries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FOR ALL ENTRIES
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/2_indices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Índices de BD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/3_runtime_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Runtime Analysis SAT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/4_buffering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table Buffering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/5_tabelas_internas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tabelas Internas Eficientes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/6_armadilhas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Armadilhas Comuns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Integrações
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Integrações
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_rfc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC Remote Function Call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_bapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_odata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OData Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_http_client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Client
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Web Services SOAP
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web Services SOAP
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Visão Geral
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soap-vs-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 SOAP vs REST
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criar-web-service-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Criar Web Service (Provider)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Criar Web Service (Provider)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transaction-se80" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SE80
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-se37-enterprise-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SE37 - Enterprise Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-soamanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SOAMANAGER
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consumir-web-service-consumer" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 Consumir Web Service (Consumer)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 Consumir Web Service (Consumer)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transaction-se80_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SE80
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usar-proxy-gerado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usar Proxy Gerado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurar-logical-port-soamanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurar Logical Port (SOAMANAGER)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Segurança
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 Segurança">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ws-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      WS-Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#certificado-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certificado SSL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soap-requestresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 SOAP Request/Response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 SOAP Request/Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-completo-integracao-externa" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Exemplo Completo: Integração Externa
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Exemplo Completo: Integração Externa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sistema-externo-sap-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistema Externo → SAP (Provider)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sap-sistema-externo-consumer" class="md-nav__link">
+    <span class="md-ellipsis">
+      SAP → Sistema Externo (Consumer)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transaction-sproxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Transaction SPROXY
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Transaction SPROXY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criar-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criar Proxy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vantagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vantagens
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Monitorização
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Monitorização">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transaction-srt_util" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SRT_UTIL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-sxmb_moni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SXMB_MONI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-sicf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SICF
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-e-boas-praticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚡ Performance e Boas Práticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚡ Performance e Boas Práticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fazer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Fazer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evitar" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Evitar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-integracao-com-sistema-bancario" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Exemplo: Integração com Sistema Bancário
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Exemplo: Integração com Sistema Bancário">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#provider-sap-expoe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider (SAP expõe)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumer-sap-consome" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumer (SAP consome)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#erro-logical-port-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro: "Logical Port not found"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erro-http-500-internal-server-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro: "HTTP 500 - Internal Server Error"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erro-connection-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro: "Connection timeout"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erro-certificate-validation-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro: "Certificate validation failed"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternativas-modernas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Alternativas Modernas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 Alternativas Modernas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-vs-soap" class="md-nav__link">
+    <span class="md-ellipsis">
+      REST vs SOAP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migracao-para-odatarest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migração para OData/REST
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Próximos Passos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_idocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_rest_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API RESTful
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../jobs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Jobs e Processamento Background
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Jobs e Processamento Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/1_criar_jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Criar Jobs SM36
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/2_variantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Variantes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/3_agendamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agendamento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/4_monitorizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitorização SM37
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/5_job_logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Job Logs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/6_batch_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Processamento Batch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../testes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Testes Unitários
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Testes Unitários
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/1_abap_unit_basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ABAP Unit Básico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/2_test_fixtures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Fixtures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/3_assertions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assertions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/4_test_doubles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Doubles e Mocking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/5_injecao_dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Injeção de Dependências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/6_code_coverage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cobertura de Código
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/7_tdd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TDD Test Driven Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Segurança
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Segurança
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/1_autorizacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Autorizações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/2_authority_check/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AUTHORITY-CHECK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/3_roles_perfis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roles e Perfis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/4_s_develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Objeto S_DEVELOP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/5_praticas_seguras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Práticas Seguras
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/6_sql_injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SQL Injection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../utilitarios/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Utilitários e Funções
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Utilitários e Funções
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/1_string_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    String Functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/2_data_hora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data e Hora
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/3_conversoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conversões
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/4_file_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    File Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/5_mensagens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mensagens
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/6_number_ranges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Number Ranges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/7_locks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Locks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cds_amdp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CDS & AMDP Avançado
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            CDS & AMDP Avançado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../meus_programas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Meus Programas
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Meus Programas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meus_programas/ZCL_UTIL_EXCEL_Documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Classe Manipulação de Ficheiros Excel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Visão Geral
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soap-vs-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 SOAP vs REST
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criar-web-service-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Criar Web Service (Provider)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Criar Web Service (Provider)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transaction-se80" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SE80
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-se37-enterprise-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SE37 - Enterprise Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-soamanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SOAMANAGER
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consumir-web-service-consumer" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 Consumir Web Service (Consumer)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 Consumir Web Service (Consumer)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transaction-se80_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SE80
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usar-proxy-gerado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usar Proxy Gerado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurar-logical-port-soamanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurar Logical Port (SOAMANAGER)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Segurança
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 Segurança">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ws-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      WS-Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#certificado-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certificado SSL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soap-requestresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 SOAP Request/Response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 SOAP Request/Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-completo-integracao-externa" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Exemplo Completo: Integração Externa
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Exemplo Completo: Integração Externa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sistema-externo-sap-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sistema Externo → SAP (Provider)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sap-sistema-externo-consumer" class="md-nav__link">
+    <span class="md-ellipsis">
+      SAP → Sistema Externo (Consumer)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transaction-sproxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Transaction SPROXY
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Transaction SPROXY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criar-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criar Proxy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vantagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vantagens
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitorizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Monitorização
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Monitorização">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transaction-srt_util" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SRT_UTIL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-sxmb_moni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SXMB_MONI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-sicf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction SICF
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-e-boas-praticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚡ Performance e Boas Práticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚡ Performance e Boas Práticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fazer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Fazer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evitar" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Evitar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplo-integracao-com-sistema-bancario" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Exemplo: Integração com Sistema Bancário
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Exemplo: Integração com Sistema Bancário">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#provider-sap-expoe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider (SAP expõe)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumer-sap-consome" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumer (SAP consome)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#erro-logical-port-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro: "Logical Port not found"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erro-http-500-internal-server-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro: "HTTP 500 - Internal Server Error"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erro-connection-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro: "Connection timeout"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erro-certificate-validation-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erro: "Certificate validation failed"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternativas-modernas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Alternativas Modernas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 Alternativas Modernas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-vs-soap" class="md-nav__link">
+    <span class="md-ellipsis">
+      REST vs SOAP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migracao-para-odatarest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migração para OData/REST
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Próximos Passos
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="web-services-soap">Web Services SOAP</h1>
+<h2 id="visao-geral">📋 Visão Geral</h2>
+<p><strong>Web Services SOAP</strong> (Simple Object Access Protocol) permitem <strong>integração</strong> entre sistemas usando <strong>XML</strong> e protocolo <strong>HTTP/HTTPS</strong>.</p>
+<p><strong>Características:</strong>
+- ✅ Baseado em XML
+- ✅ Protocolo SOAP
+- ✅ WSDL para definição
+- ✅ Suporte a tipos complexos
+- ✅ WS-Security para segurança
+- ⚠️ Mais pesado que REST</p>
+<hr />
+<h2 id="soap-vs-rest">🎯 SOAP vs REST</h2>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>SOAP</th>
+<th>REST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Protocolo</strong></td>
+<td>SOAP (XML)</td>
+<td>HTTP</td>
+</tr>
+<tr>
+<td><strong>Formato</strong></td>
+<td>Apenas XML</td>
+<td>JSON, XML, etc.</td>
+</tr>
+<tr>
+<td><strong>Complexidade</strong></td>
+<td>Alta</td>
+<td>Baixa</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Mais lento</td>
+<td>Mais rápido</td>
+</tr>
+<tr>
+<td><strong>Segurança</strong></td>
+<td>WS-Security</td>
+<td>HTTPS, OAuth</td>
+</tr>
+<tr>
+<td><strong>Uso SAP</strong></td>
+<td>Legacy, ERP</td>
+<td><strong>Fiori, S/4HANA</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="criar-web-service-provider">🛠️ Criar Web Service (Provider)</h2>
+<h3 id="transaction-se80">Transaction SE80</h3>
+<p><strong>Criar Function Module:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="nv">z_ws_get_customer</span><span class="p">.</span>
+<span class="c1">*&quot;----------------------------------------------------------------------</span>
+<span class="c1">*&quot;*&quot;Interface Local:</span>
+<span class="c1">*&quot;  IMPORTING</span>
+<span class="c1">*&quot;     VALUE(IV_KUNNR) TYPE  KUNNR</span>
+<span class="c1">*&quot;  EXPORTING</span>
+<span class="c1">*&quot;     VALUE(ES_CUSTOMER) TYPE  KNA1</span>
+<span class="c1">*&quot;     VALUE(EV_MESSAGE) TYPE  STRING</span>
+<span class="c1">*&quot;  EXCEPTIONS</span>
+<span class="c1">*&quot;      CUSTOMER_NOT_FOUND</span>
+<span class="c1">*&quot;----------------------------------------------------------------------</span>
+
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="k">SINGLE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="nv">kna1</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="nv">es_customer</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="nv">kunnr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">iv_kunnr</span><span class="p">.</span>
+
+<span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">subrc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span>
+<span class="w">    </span><span class="nv">ev_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">|</span><span class="s1">Cliente </span><span class="p">{</span><span class="w"> </span><span class="nv">iv_kunnr</span><span class="w"> </span><span class="p">}</span><span class="s1"> encontrado</span><span class="p">|.</span>
+<span class="w">  </span><span class="k">ELSE</span><span class="p">.</span>
+<span class="w">    </span><span class="nv">ev_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">|</span><span class="s1">Cliente </span><span class="p">{</span><span class="w"> </span><span class="nv">iv_kunnr</span><span class="w"> </span><span class="p">}</span><span class="s1"> não existe</span><span class="p">|.</span>
+<span class="w">    </span><span class="k">RAISE</span><span class="w"> </span><span class="nv">customer_not_found</span><span class="p">.</span>
+<span class="w">  </span><span class="k">ENDIF</span><span class="p">.</span>
+
+<span class="k">ENDFUNCTION</span><span class="p">.</span>
+</code></pre></div>
+<p><strong>Atributos da Function:</strong>
+- ☑ <strong>Remote-Enabled Module</strong> (SE37 → Attributes)</p>
+<hr />
+<h3 id="transaction-se37-enterprise-services">Transaction SE37 - Enterprise Services</h3>
+<p><strong>Criar Web Service:</strong></p>
+<ol>
+<li><strong>Utilities</strong> → More Utilities → <strong>Create Web Service</strong></li>
+<li><strong>Service Definition:</strong> <code>Z_CUSTOMER_WS</code></li>
+<li><strong>Endpoint:</strong> <code>Z_CUSTOMER_EP</code></li>
+<li><strong>Profile:</strong> <code>Default</code></li>
+<li><strong>Save &amp; Activate</strong></li>
+</ol>
+<hr />
+<h3 id="transaction-soamanager">Transaction SOAMANAGER</h3>
+<p><strong>Configurar e ativar Web Service:</strong></p>
+<ol>
+<li><strong>SOAMANAGER</strong></li>
+<li><strong>Web Service Configuration</strong></li>
+<li><strong>Search:</strong> <code>Z_CUSTOMER_WS</code></li>
+<li><strong>Create Service</strong></li>
+<li><strong>Binding:</strong> <code>Z_CUSTOMER_BINDING</code></li>
+<li><strong>Configure:</strong> HTTPS, autenticação</li>
+<li><strong>Save</strong></li>
+</ol>
+<p><strong>URL do WSDL:</strong>
+<div class="highlight"><pre><span></span><code>https://server:port/sap/bc/srt/wsdl/flv_10002A111AD1/bndg_url/sap/bc/srt/rfc/sap/z_customer_ws/100/z_customer_binding/z_customer_binding
+</code></pre></div></p>
+<hr />
+<h2 id="consumir-web-service-consumer">🌐 Consumir Web Service (Consumer)</h2>
+<h3 id="transaction-se80_1">Transaction SE80</h3>
+<p><strong>Criar Proxy Local:</strong></p>
+<ol>
+<li><strong>SE80</strong> → <strong>Enterprise Services</strong></li>
+<li><strong>Create</strong> → <strong>Service Consumer</strong></li>
+<li><strong>WSDL:</strong> URL ou upload arquivo</li>
+<li><strong>Package:</strong> ZPACKAGE</li>
+<li><strong>Prefix:</strong> ZCO_</li>
+<li><strong>Generate</strong></li>
+</ol>
+<hr />
+<h3 id="usar-proxy-gerado">Usar Proxy Gerado</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">*&amp;---------------------------------------------------------------------*</span>
+<span class="c1">*&amp; Report Z_CONSUME_WEBSERVICE</span>
+<span class="c1">*&amp;---------------------------------------------------------------------*</span>
+<span class="k">REPORT</span><span class="w"> </span><span class="nv">z_consume_webservice</span><span class="p">.</span>
+
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="w"> </span><span class="k">TYPE REF TO</span><span class="w"> </span><span class="nv">zco_customer_ws</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_input</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">zco_get_customer_request</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_output</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">zco_get_customer_response</span><span class="p">.</span>
+
+<span class="k">PARAMETERS</span><span class="p">:</span><span class="w"> </span><span class="nv">p_kunnr</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">kunnr</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;0001000000&#39;</span><span class="p">.</span>
+
+<span class="k">START-OF-SELECTION</span><span class="p">.</span>
+
+<span class="w">  </span><span class="k">TRY</span><span class="p">.</span>
+<span class="w">      </span><span class="c1">&quot; Criar proxy</span>
+<span class="w">      </span><span class="k">CREATE OBJECT</span><span class="w"> </span><span class="nv">lo_proxy</span>
+<span class="w">        </span><span class="k">EXPORTING</span>
+<span class="w">          </span><span class="nv">logical_port_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Z_CUSTOMER_LP&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; SOAMANAGER</span>
+
+<span class="w">      </span><span class="c1">&quot; Input</span>
+<span class="w">      </span><span class="nv">ls_input</span><span class="o">-</span><span class="nv">iv_kunnr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">p_kunnr</span><span class="p">.</span>
+
+<span class="w">      </span><span class="c1">&quot; Chamar Web Service</span>
+<span class="w">      </span><span class="k">CALL METHOD</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="o">-&gt;</span><span class="nv">get_customer</span>
+<span class="w">        </span><span class="k">EXPORTING</span>
+<span class="w">          </span><span class="nv">input</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">ls_input</span>
+<span class="w">        </span><span class="k">IMPORTING</span>
+<span class="w">          </span><span class="nv">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ls_output</span><span class="p">.</span>
+
+<span class="w">      </span><span class="c1">&quot; Resultado</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;═══ RESULTADO ═══&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">/.</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Cliente: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_output</span><span class="o">-</span><span class="nv">es_customer</span><span class="o">-</span><span class="nv">kunnr</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Nome: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_output</span><span class="o">-</span><span class="nv">es_customer</span><span class="o">-</span><span class="nv">name1</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Cidade: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_output</span><span class="o">-</span><span class="nv">es_customer</span><span class="o">-</span><span class="nv">ort01</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Mensagem: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_output</span><span class="o">-</span><span class="nv">ev_message</span><span class="w"> </span><span class="p">}|,</span><span class="w"> </span><span class="p">/.</span>
+
+<span class="w">    </span><span class="k">CATCH</span><span class="w"> </span><span class="nv">cx_ai_system_fault</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">DATA</span><span class="p">(</span><span class="nv">lo_sys_fault</span><span class="p">).</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Erro de sistema: </span><span class="p">{</span><span class="w"> </span><span class="nv">lo_sys_fault</span><span class="o">-&gt;</span><span class="nf">get_text</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}|.</span>
+
+<span class="w">    </span><span class="k">CATCH</span><span class="w"> </span><span class="nv">cx_ai_application_fault</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">DATA</span><span class="p">(</span><span class="nv">lo_app_fault</span><span class="p">).</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Erro de aplicação: </span><span class="p">{</span><span class="w"> </span><span class="nv">lo_app_fault</span><span class="o">-&gt;</span><span class="nf">get_text</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}|.</span>
+
+<span class="w">    </span><span class="k">CATCH</span><span class="w"> </span><span class="nv">cx_root</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">DATA</span><span class="p">(</span><span class="nv">lo_ex</span><span class="p">).</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Erro: </span><span class="p">{</span><span class="w"> </span><span class="nv">lo_ex</span><span class="o">-&gt;</span><span class="nf">get_text</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">  </span><span class="k">ENDTRY</span><span class="p">.</span>
+</code></pre></div>
+<hr />
+<h3 id="configurar-logical-port-soamanager">Configurar Logical Port (SOAMANAGER)</h3>
+<ol>
+<li><strong>SOAMANAGER</strong></li>
+<li><strong>Single Service Administration</strong></li>
+<li><strong>Search:</strong> Proxy name</li>
+<li><strong>Create Logical Port:</strong> <code>Z_CUSTOMER_LP</code></li>
+<li><strong>URL:</strong> URL do WSDL remoto</li>
+<li><strong>Authentication:</strong> Basic, SSL, etc.</li>
+<li><strong>Save</strong></li>
+</ol>
+<hr />
+<h2 id="seguranca">🔐 Segurança</h2>
+<h3 id="ws-security">WS-Security</h3>
+<p><strong>Username Token:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;wsse:Security&gt;</span>
+<span class="w">  </span><span class="nt">&lt;wsse:UsernameToken&gt;</span>
+<span class="w">    </span><span class="nt">&lt;wsse:Username&gt;</span>user<span class="nt">&lt;/wsse:Username&gt;</span>
+<span class="w">    </span><span class="nt">&lt;wsse:Password</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;PasswordText&quot;</span><span class="nt">&gt;</span>pass<span class="nt">&lt;/wsse:Password&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/wsse:UsernameToken&gt;</span>
+<span class="nt">&lt;/wsse:Security&gt;</span>
+</code></pre></div>
+<p><strong>Configurar em SOAMANAGER:</strong>
+- Authentication: <strong>User ID/Password</strong>
+- Transport Level Security: <strong>HTTPS</strong></p>
+<hr />
+<h3 id="certificado-ssl">Certificado SSL</h3>
+<p><strong>STRUST - Trust Manager:</strong></p>
+<ol>
+<li><strong>STRUST</strong></li>
+<li><strong>SSL Client (Anonymous)</strong></li>
+<li>Import Certificate</li>
+<li>Add to Certificate List</li>
+</ol>
+<p><strong>SOAMANAGER:</strong>
+- Authentication: <strong>SSL Client Certificate</strong>
+- Select Certificate</p>
+<hr />
+<h2 id="soap-requestresponse">📊 SOAP Request/Response</h2>
+<h3 id="request-example">Request Example</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;soapenv:Envelope</span><span class="w"> </span><span class="na">xmlns:soapenv=</span><span class="s">&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span><span class="w"> </span>
+<span class="w">                  </span><span class="na">xmlns:urn=</span><span class="s">&quot;urn:sap-com:document:sap:rfc:functions&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;soapenv:Header/&gt;</span>
+<span class="w">   </span><span class="nt">&lt;soapenv:Body&gt;</span>
+<span class="w">      </span><span class="nt">&lt;urn:Z_WS_GET_CUSTOMER&gt;</span>
+<span class="w">         </span><span class="nt">&lt;IV_KUNNR&gt;</span>0001000000<span class="nt">&lt;/IV_KUNNR&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/urn:Z_WS_GET_CUSTOMER&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/soapenv:Body&gt;</span>
+<span class="nt">&lt;/soapenv:Envelope&gt;</span>
+</code></pre></div>
+<h3 id="response-example">Response Example</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;soapenv:Envelope</span><span class="w"> </span><span class="na">xmlns:soapenv=</span><span class="s">&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;soapenv:Body&gt;</span>
+<span class="w">      </span><span class="nt">&lt;n0:Z_WS_GET_CUSTOMER.Response</span><span class="w"> </span><span class="na">xmlns:n0=</span><span class="s">&quot;urn:sap-com:document:sap:rfc:functions&quot;</span><span class="nt">&gt;</span>
+<span class="w">         </span><span class="nt">&lt;ES_CUSTOMER&gt;</span>
+<span class="w">            </span><span class="nt">&lt;KUNNR&gt;</span>0001000000<span class="nt">&lt;/KUNNR&gt;</span>
+<span class="w">            </span><span class="nt">&lt;NAME1&gt;</span>Cliente<span class="w"> </span>Teste<span class="nt">&lt;/NAME1&gt;</span>
+<span class="w">            </span><span class="nt">&lt;ORT01&gt;</span>Lisboa<span class="nt">&lt;/ORT01&gt;</span>
+<span class="w">         </span><span class="nt">&lt;/ES_CUSTOMER&gt;</span>
+<span class="w">         </span><span class="nt">&lt;EV_MESSAGE&gt;</span>Cliente<span class="w"> </span>0001000000<span class="w"> </span>encontrado<span class="nt">&lt;/EV_MESSAGE&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/n0:Z_WS_GET_CUSTOMER.Response&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/soapenv:Body&gt;</span>
+<span class="nt">&lt;/soapenv:Envelope&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="exemplo-completo-integracao-externa">💡 Exemplo Completo: Integração Externa</h2>
+<h3 id="sistema-externo-sap-provider">Sistema Externo → SAP (Provider)</h3>
+<p><strong>Function Module:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="nv">z_ws_create_sales_order</span><span class="p">.</span>
+<span class="c1">*&quot;----------------------------------------------------------------------</span>
+<span class="c1">*&quot;*&quot;Interface Local:</span>
+<span class="c1">*&quot;  IMPORTING</span>
+<span class="c1">*&quot;     VALUE(IS_HEADER) TYPE  BAPISDHD1</span>
+<span class="c1">*&quot;  TABLES</span>
+<span class="c1">*&quot;      IT_ITEMS STRUCTURE  BAPISDITM</span>
+<span class="c1">*&quot;      ET_RETURN STRUCTURE  BAPIRET2</span>
+<span class="c1">*&quot;  EXPORTING</span>
+<span class="c1">*&quot;     VALUE(EV_ORDER_NUMBER) TYPE  VBELN_VA</span>
+<span class="c1">*&quot;----------------------------------------------------------------------</span>
+
+<span class="w">  </span><span class="c1">&quot; Criar ordem via BAPI</span>
+<span class="w">  </span><span class="k">CALL FUNCTION</span><span class="w"> </span><span class="s1">&#39;BAPI_SALESORDER_CREATEFROMDAT2&#39;</span>
+<span class="w">    </span><span class="k">EXPORTING</span>
+<span class="w">      </span><span class="nv">order_header_in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">is_header</span>
+<span class="w">    </span><span class="k">IMPORTING</span>
+<span class="w">      </span><span class="nv">salesdocument</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">ev_order_number</span>
+<span class="w">    </span><span class="k">TABLES</span>
+<span class="w">      </span><span class="k">return</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="nv">et_return</span>
+<span class="w">      </span><span class="nv">order_items_in</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">it_items</span><span class="p">.</span>
+
+<span class="w">  </span><span class="c1">&quot; Commit</span>
+<span class="w">  </span><span class="k">READ</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="nv">et_return</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;E&#39;</span><span class="w"> </span><span class="k">TRANSPORTING NO FIELDS</span><span class="p">.</span>
+<span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">subrc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span>
+<span class="w">    </span><span class="k">CALL FUNCTION</span><span class="w"> </span><span class="s1">&#39;BAPI_TRANSACTION_ROLLBACK&#39;</span><span class="p">.</span>
+<span class="w">  </span><span class="k">ELSE</span><span class="p">.</span>
+<span class="w">    </span><span class="k">CALL FUNCTION</span><span class="w"> </span><span class="s1">&#39;BAPI_TRANSACTION_COMMIT&#39;</span>
+<span class="w">      </span><span class="k">EXPORTING</span><span class="w"> </span><span class="k">wait</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;X&#39;</span><span class="p">.</span>
+<span class="w">  </span><span class="k">ENDIF</span><span class="p">.</span>
+
+<span class="k">ENDFUNCTION</span><span class="p">.</span>
+</code></pre></div>
+<p><strong>Expor via SOAMANAGER</strong> (passos acima).</p>
+<hr />
+<h3 id="sap-sistema-externo-consumer">SAP → Sistema Externo (Consumer)</h3>
+<p><strong>Consumir Web Service de terceiros:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">*&amp;---------------------------------------------------------------------*</span>
+<span class="c1">*&amp; Report Z_CALL_EXTERNAL_WS</span>
+<span class="c1">*&amp;---------------------------------------------------------------------*</span>
+<span class="k">REPORT</span><span class="w"> </span><span class="nv">z_call_external_ws</span><span class="p">.</span>
+
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="w"> </span><span class="k">TYPE REF TO</span><span class="w"> </span><span class="nv">zco_external_service</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_request</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">zco_weather_request</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_response</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">zco_weather_response</span><span class="p">.</span>
+
+<span class="k">PARAMETERS</span><span class="p">:</span><span class="w"> </span><span class="nv">p_city</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">string</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;Lisboa&#39;</span><span class="p">.</span>
+
+<span class="k">START-OF-SELECTION</span><span class="p">.</span>
+
+<span class="w">  </span><span class="k">TRY</span><span class="p">.</span>
+<span class="w">      </span><span class="c1">&quot; Criar proxy (gerado a partir de WSDL externo)</span>
+<span class="w">      </span><span class="k">CREATE OBJECT</span><span class="w"> </span><span class="nv">lo_proxy</span>
+<span class="w">        </span><span class="k">EXPORTING</span>
+<span class="w">          </span><span class="nv">logical_port_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Z_WEATHER_LP&#39;</span><span class="p">.</span>
+
+<span class="w">      </span><span class="c1">&quot; Request</span>
+<span class="w">      </span><span class="nv">ls_request</span><span class="o">-</span><span class="nv">city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">p_city</span><span class="p">.</span>
+
+<span class="w">      </span><span class="c1">&quot; Chamar serviço externo</span>
+<span class="w">      </span><span class="k">CALL METHOD</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="o">-&gt;</span><span class="nv">get_weather</span>
+<span class="w">        </span><span class="k">EXPORTING</span>
+<span class="w">          </span><span class="nv">input</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">ls_request</span>
+<span class="w">        </span><span class="k">IMPORTING</span>
+<span class="w">          </span><span class="nv">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ls_response</span><span class="p">.</span>
+
+<span class="w">      </span><span class="c1">&quot; Resultado</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Cidade: </span><span class="p">{</span><span class="w"> </span><span class="nv">p_city</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Temperatura: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_response</span><span class="o">-</span><span class="nv">temperature</span><span class="w"> </span><span class="p">}</span><span class="s1">°C</span><span class="p">|.</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Condição: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_response</span><span class="o">-</span><span class="nv">condition</span><span class="w"> </span><span class="p">}|.</span>
+
+<span class="w">    </span><span class="k">CATCH</span><span class="w"> </span><span class="nv">cx_root</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">DATA</span><span class="p">(</span><span class="nv">lo_ex</span><span class="p">).</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Erro: </span><span class="p">{</span><span class="w"> </span><span class="nv">lo_ex</span><span class="o">-&gt;</span><span class="nf">get_text</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">  </span><span class="k">ENDTRY</span><span class="p">.</span>
+</code></pre></div>
+<hr />
+<h2 id="transaction-sproxy">🔧 Transaction SPROXY</h2>
+<p><strong>Service Proxy</strong> - alternativa a SE80 para criar proxies.</p>
+<h3 id="criar-proxy">Criar Proxy</h3>
+<ol>
+<li><strong>SPROXY</strong></li>
+<li><strong>Outside-In</strong> → External WSDL</li>
+<li>Upload WSDL ou URL</li>
+<li><strong>Generate</strong></li>
+</ol>
+<h3 id="vantagens">Vantagens</h3>
+<ul>
+<li>✅ Interface mais moderna</li>
+<li>✅ Melhor para Enterprise Services</li>
+<li>✅ Suporte a XSD complexos</li>
+</ul>
+<hr />
+<h2 id="monitorizacao">🛠️ Monitorização</h2>
+<h3 id="transaction-srt_util">Transaction SRT_UTIL</h3>
+<p><strong>Runtime Administration:</strong>
+- Ver logs de execução
+- Mensagens SOAP
+- Erros</p>
+<h3 id="transaction-sxmb_moni">Transaction SXMB_MONI</h3>
+<p><strong>Integration Engine Monitoring:</strong>
+- Monitorar mensagens XML
+- Ver payloads
+- Reprocessar mensagens</p>
+<h3 id="transaction-sicf">Transaction SICF</h3>
+<p><strong>HTTP Service Maintenance:</strong>
+- Ativar/desativar serviços
+- Configurar handlers
+- Ver estatísticas</p>
+<hr />
+<h2 id="performance-e-boas-praticas">⚡ Performance e Boas Práticas</h2>
+<h3 id="fazer">✅ Fazer</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">&quot; 1. Reutilizar instância do proxy</span>
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">go_proxy</span><span class="w"> </span><span class="k">TYPE REF TO</span><span class="w"> </span><span class="nv">zco_service</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; Global</span>
+
+<span class="k">FORM</span><span class="w"> </span><span class="nf">call_service</span><span class="p">.</span>
+<span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="nv">go_proxy</span><span class="w"> </span><span class="ow">IS NOT BOUND</span><span class="p">.</span>
+<span class="w">    </span><span class="k">CREATE OBJECT</span><span class="w"> </span><span class="nv">go_proxy</span>
+<span class="w">      </span><span class="k">EXPORTING</span><span class="w"> </span><span class="nv">logical_port_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;LP_NAME&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; ✅ Criar uma vez</span>
+<span class="w">  </span><span class="k">ENDIF</span><span class="p">.</span>
+
+<span class="w">  </span><span class="c1">&quot; Usar go_proxy...</span>
+<span class="k">ENDFORM</span><span class="p">.</span>
+
+<span class="c1">&quot; 2. Tratar exceções específicas</span>
+<span class="k">TRY</span><span class="p">.</span>
+<span class="w">    </span><span class="k">CALL METHOD</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="o">-&gt;</span><span class="nv">method</span><span class="p">.</span>
+<span class="w">  </span><span class="k">CATCH</span><span class="w"> </span><span class="nv">cx_ai_system_fault</span><span class="p">.</span>
+<span class="w">    </span><span class="c1">&quot; Erro de comunicação</span>
+<span class="w">  </span><span class="k">CATCH</span><span class="w"> </span><span class="nv">cx_ai_application_fault</span><span class="p">.</span>
+<span class="w">    </span><span class="c1">&quot; Erro de negócio</span>
+<span class="w">  </span><span class="k">CATCH</span><span class="w"> </span><span class="nv">cx_root</span><span class="p">.</span>
+<span class="w">    </span><span class="c1">&quot; Outros erros</span>
+<span class="k">ENDTRY</span><span class="p">.</span>
+
+<span class="c1">&quot; 3. Timeout adequado</span>
+<span class="c1">&quot; Configurar em SOAMANAGER → Logical Port → Timeouts</span>
+
+<span class="c1">&quot; 4. Comprimir grandes payloads</span>
+<span class="c1">&quot; SOAMANAGER → Service Definition → Compression</span>
+
+<span class="c1">&quot; 5. Usar logical ports (não hardcode URLs)</span>
+<span class="k">CREATE OBJECT</span><span class="w"> </span><span class="nv">lo_proxy</span>
+<span class="w">  </span><span class="k">EXPORTING</span><span class="w"> </span><span class="nv">logical_port_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Z_LP&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; ✅ SM59</span>
+</code></pre></div>
+<h3 id="evitar">❌ Evitar</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">&quot; 1. Criar proxy em cada chamada</span>
+<span class="k">FORM</span><span class="w"> </span><span class="nf">call_ws</span><span class="p">.</span>
+<span class="w">  </span><span class="k">CREATE OBJECT</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; ❌ Repetitivo!</span>
+<span class="w">  </span><span class="k">CALL METHOD</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="o">-&gt;</span><span class="nv">method</span><span class="p">.</span>
+<span class="k">ENDFORM</span><span class="p">.</span>
+
+<span class="c1">&quot; 2. Não tratar erros</span>
+<span class="k">CALL METHOD</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="o">-&gt;</span><span class="nv">method</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; ❌ E se falhar?</span>
+
+<span class="c1">&quot; 3. Hardcoded URLs</span>
+<span class="k">DATA</span><span class="w"> </span><span class="nv">lv_url</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">string</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="s1">&#39;http://prod.com/ws&#39;</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; ❌ Usar LP</span>
+
+<span class="c1">&quot; 4. Payloads muito grandes sem compressão</span>
+<span class="c1">&quot; Configurar compressão em SOAMANAGER</span>
+
+<span class="c1">&quot; 5. Sync chamadas para operações longas</span>
+<span class="k">CALL METHOD</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="o">-&gt;</span><span class="nv">long_operation</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; ❌ Timeout!</span>
+<span class="c1">&quot; Melhor: usar RFC assíncrono ou job</span>
+</code></pre></div>
+<hr />
+<h2 id="exemplo-integracao-com-sistema-bancario">💡 Exemplo: Integração com Sistema Bancário</h2>
+<h3 id="provider-sap-expoe">Provider (SAP expõe)</h3>
+<p><strong>Function Module:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="nv">z_ws_payment_status</span><span class="p">.</span>
+<span class="c1">*&quot;----------------------------------------------------------------------</span>
+<span class="c1">*&quot;*&quot;Interface Local:</span>
+<span class="c1">*&quot;  IMPORTING</span>
+<span class="c1">*&quot;     VALUE(IV_PAYMENT_ID) TYPE  STRING</span>
+<span class="c1">*&quot;  EXPORTING</span>
+<span class="c1">*&quot;     VALUE(EV_STATUS) TYPE  STRING</span>
+<span class="c1">*&quot;     VALUE(EV_AMOUNT) TYPE  WRBTR</span>
+<span class="c1">*&quot;     VALUE(EV_CURRENCY) TYPE  WAERS</span>
+<span class="c1">*&quot;     VALUE(EV_DATE) TYPE  DATUM</span>
+<span class="c1">*&quot;----------------------------------------------------------------------</span>
+
+<span class="w">  </span><span class="c1">&quot; Buscar pagamento</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="k">SINGLE</span>
+<span class="w">    </span><span class="nv">status</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">amount</span><span class="p">,</span>
+<span class="w">    </span><span class="k">currency</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">payment_date</span>
+<span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="nv">zpayments</span>
+<span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="nv">payment_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">@</span><span class="nv">iv_payment_id</span>
+<span class="w">  </span><span class="k">INTO</span><span class="w"> </span><span class="p">(</span><span class="err">@</span><span class="nv">ev_status</span><span class="p">,</span><span class="w"> </span><span class="err">@</span><span class="nv">ev_amount</span><span class="p">,</span><span class="w"> </span><span class="err">@</span><span class="nv">ev_currency</span><span class="p">,</span><span class="w"> </span><span class="err">@</span><span class="nv">ev_date</span><span class="p">).</span>
+
+<span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">subrc</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span>
+<span class="w">    </span><span class="nv">ev_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;NOT_FOUND&#39;</span><span class="p">.</span>
+<span class="w">  </span><span class="k">ENDIF</span><span class="p">.</span>
+
+<span class="k">ENDFUNCTION</span><span class="p">.</span>
+</code></pre></div>
+<p><strong>Expor via SOAMANAGER.</strong></p>
+<hr />
+<h3 id="consumer-sap-consome">Consumer (SAP consome)</h3>
+<p><strong>Chamar API bancária:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">*&amp;---------------------------------------------------------------------*</span>
+<span class="c1">*&amp; Report Z_BANK_API_CALL</span>
+<span class="c1">*&amp;---------------------------------------------------------------------*</span>
+<span class="k">REPORT</span><span class="w"> </span><span class="nv">z_bank_api_call</span><span class="p">.</span>
+
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="w"> </span><span class="k">TYPE REF TO</span><span class="w"> </span><span class="nv">zco_bank_api</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_request</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">zco_transfer_request</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">ls_response</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">zco_transfer_response</span><span class="p">.</span>
+
+<span class="k">PARAMETERS</span><span class="p">:</span><span class="w"> </span><span class="nv">p_from</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">string</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;PT50123456789&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">p_to</span><span class="w">   </span><span class="k">TYPE </span><span class="nv">string</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;PT50987654321&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">p_amnt</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">p</span><span class="w"> </span><span class="k">DECIMALS</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;1000.00&#39;</span><span class="p">.</span>
+
+<span class="k">START-OF-SELECTION</span><span class="p">.</span>
+
+<span class="w">  </span><span class="k">TRY</span><span class="p">.</span>
+<span class="w">      </span><span class="c1">&quot; Criar proxy para API do banco</span>
+<span class="w">      </span><span class="k">CREATE OBJECT</span><span class="w"> </span><span class="nv">lo_proxy</span>
+<span class="w">        </span><span class="k">EXPORTING</span>
+<span class="w">          </span><span class="nv">logical_port_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Z_BANK_LP&#39;</span><span class="p">.</span>
+
+<span class="w">      </span><span class="c1">&quot; Preparar transferência</span>
+<span class="w">      </span><span class="nv">ls_request</span><span class="o">-</span><span class="nv">from_account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">p_from</span><span class="p">.</span>
+<span class="w">      </span><span class="nv">ls_request</span><span class="o">-</span><span class="nv">to_account</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">p_to</span><span class="p">.</span>
+<span class="w">      </span><span class="nv">ls_request</span><span class="o">-</span><span class="nv">amount</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">p_amnt</span><span class="p">.</span>
+<span class="w">      </span><span class="nv">ls_request</span><span class="o">-</span><span class="nv">currency</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;EUR&#39;</span><span class="p">.</span>
+<span class="w">      </span><span class="nv">ls_request</span><span class="o">-</span><span class="nv">description</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pagamento SAP&#39;</span><span class="p">.</span>
+
+<span class="w">      </span><span class="c1">&quot; Executar transferência</span>
+<span class="w">      </span><span class="k">CALL METHOD</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="o">-&gt;</span><span class="nv">transfer_funds</span>
+<span class="w">        </span><span class="k">EXPORTING</span>
+<span class="w">          </span><span class="nv">input</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">ls_request</span>
+<span class="w">        </span><span class="k">IMPORTING</span>
+<span class="w">          </span><span class="nv">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ls_response</span><span class="p">.</span>
+
+<span class="w">      </span><span class="c1">&quot; Resultado</span>
+<span class="w">      </span><span class="k">IF</span><span class="w"> </span><span class="nv">ls_response</span><span class="o">-</span><span class="nv">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SUCCESS&#39;</span><span class="p">.</span>
+<span class="w">        </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;✅ Transferência realizada com sucesso!&#39;</span><span class="p">.</span>
+<span class="w">        </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">ID Transação: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_response</span><span class="o">-</span><span class="nv">transaction_id</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">        </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Timestamp: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_response</span><span class="o">-</span><span class="nv">timestamp</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">      </span><span class="k">ELSE</span><span class="p">.</span>
+<span class="w">        </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="s1">&#39;❌ Erro na transferência:&#39;</span><span class="p">.</span>
+<span class="w">        </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Código: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_response</span><span class="o">-</span><span class="nv">error_code</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">        </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Mensagem: </span><span class="p">{</span><span class="w"> </span><span class="nv">ls_response</span><span class="o">-</span><span class="nv">error_message</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">      </span><span class="k">ENDIF</span><span class="p">.</span>
+
+<span class="w">    </span><span class="k">CATCH</span><span class="w"> </span><span class="nv">cx_ai_system_fault</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">DATA</span><span class="p">(</span><span class="nv">lo_sys_ex</span><span class="p">).</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Erro de comunicação: </span><span class="p">{</span><span class="w"> </span><span class="nv">lo_sys_ex</span><span class="o">-&gt;</span><span class="nf">get_text</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}|.</span>
+
+<span class="w">    </span><span class="k">CATCH</span><span class="w"> </span><span class="nv">cx_ai_application_fault</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">DATA</span><span class="p">(</span><span class="nv">lo_app_ex</span><span class="p">).</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Erro do banco: </span><span class="p">{</span><span class="w"> </span><span class="nv">lo_app_ex</span><span class="o">-&gt;</span><span class="nf">get_text</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}|.</span>
+
+<span class="w">    </span><span class="k">CATCH</span><span class="w"> </span><span class="nv">cx_root</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">DATA</span><span class="p">(</span><span class="nv">lo_ex</span><span class="p">).</span>
+<span class="w">      </span><span class="k">WRITE</span><span class="p">:</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="p">|</span><span class="s1">Erro: </span><span class="p">{</span><span class="w"> </span><span class="nv">lo_ex</span><span class="o">-&gt;</span><span class="nf">get_text</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">}|.</span>
+<span class="w">  </span><span class="k">ENDTRY</span><span class="p">.</span>
+</code></pre></div>
+<hr />
+<h2 id="troubleshooting">🔧 Troubleshooting</h2>
+<h3 id="erro-logical-port-not-found">Erro: "Logical Port not found"</h3>
+<p><strong>Solução:</strong>
+1. <strong>SOAMANAGER</strong>
+2. Criar Logical Port
+3. Configurar URL e autenticação</p>
+<hr />
+<h3 id="erro-http-500-internal-server-error">Erro: "HTTP 500 - Internal Server Error"</h3>
+<p><strong>Causas:</strong>
+- Erro no código do serviço
+- Dados inválidos</p>
+<p><strong>Solução:</strong>
+- <strong>SRT_UTIL</strong> → Ver logs
+- <strong>ST22</strong> → Dumps
+- Debugar function module</p>
+<hr />
+<h3 id="erro-connection-timeout">Erro: "Connection timeout"</h3>
+<p><strong>Solução:</strong>
+1. <strong>SOAMANAGER</strong> → Logical Port
+2. <strong>Timeouts</strong> tab
+3. Aumentar timeout (ex: 60s)</p>
+<hr />
+<h3 id="erro-certificate-validation-failed">Erro: "Certificate validation failed"</h3>
+<p><strong>Solução:</strong>
+1. <strong>STRUST</strong>
+2. Import certificado do servidor
+3. Add to Certificate List</p>
+<hr />
+<h2 id="alternativas-modernas">🔗 Alternativas Modernas</h2>
+<h3 id="rest-vs-soap">REST vs SOAP</h3>
+<p><strong>Preferir REST quando:</strong>
+- ✅ Integração com sistemas modernos
+- ✅ Aplicações mobile/web
+- ✅ Performance crítica
+- ✅ Simplicidade</p>
+<p><strong>Usar SOAP quando:</strong>
+- ✅ Sistemas legados
+- ✅ WS-Security necessário
+- ✅ Contratos formais (WSDL)
+- ✅ Transações distribuídas</p>
+<h3 id="migracao-para-odatarest">Migração para OData/REST</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">&quot; SOAP (antigo)</span>
+<span class="k">CALL METHOD</span><span class="w"> </span><span class="nv">lo_proxy</span><span class="o">-&gt;</span><span class="nv">get_customer</span>
+<span class="w">  </span><span class="k">EXPORTING</span><span class="w"> </span><span class="nv">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ls_input</span>
+<span class="w">  </span><span class="k">IMPORTING</span><span class="w"> </span><span class="nv">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">ls_output</span><span class="p">.</span>
+
+<span class="c1">&quot; REST (moderno)</span>
+<span class="k">DATA</span><span class="p">(</span><span class="nv">lo_http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">cl_http_client</span><span class="o">=&gt;</span><span class="nf">create_by_url</span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;https://api.com/customers&#39;</span><span class="w"> </span><span class="p">).</span>
+<span class="nv">lo_http</span><span class="o">-&gt;</span><span class="nv">request</span><span class="o">-&gt;</span><span class="nf">set_method</span><span class="p">(</span><span class="w"> </span><span class="nv">if_http_request</span><span class="o">=&gt;</span><span class="nv">co_request_method_get</span><span class="w"> </span><span class="p">).</span>
+<span class="nv">lo_http</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">(</span><span class="w"> </span><span class="p">).</span>
+<span class="nv">lo_http</span><span class="o">-&gt;</span><span class="nf">receive</span><span class="p">(</span><span class="w"> </span><span class="p">).</span>
+<span class="k">DATA</span><span class="p">(</span><span class="nv">lv_json</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">lo_http</span><span class="o">-&gt;</span><span class="nv">response</span><span class="o">-&gt;</span><span class="nf">get_cdata</span><span class="p">(</span><span class="w"> </span><span class="p">).</span>
+</code></pre></div>
+<hr />
+<h2 id="proximos-passos">🔗 Próximos Passos</h2>
+<ul>
+<li><strong><a href="../3_odata/">OData</a></strong> - Alternativa RESTful moderna</li>
+<li><strong><a href="../4_http_client/">HTTP Client</a></strong> - Consumir APIs REST</li>
+<li><strong><a href="../7_rest_api/">REST API</a></strong> - Criar APIs REST em ABAP</li>
+</ul>
+<hr />
+<p><strong>Tags:</strong> <code>#WebServices</code> <code>#SOAP</code> <code>#WSDL</code> <code>#Integrações</code> <code>#SPROXY</code> <code>#SOAMANAGER</code></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

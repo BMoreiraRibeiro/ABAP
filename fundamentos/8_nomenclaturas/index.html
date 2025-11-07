@@ -1,0 +1,4469 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bmoreiraribeiro.github.io/ABAP/fundamentos/8_nomenclaturas/">
+      
+      
+        <link rel="prev" href="../7_OO_basica/">
+      
+      
+        <link rel="next" href="../../sql/">
+      
+      
+      <link rel="icon" href="../../assets/images/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Nomenclaturas e Convenções - Almanaque ABAP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nomenclaturas-e-convencoes-abap" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Almanaque ABAP" class="md-header__button md-logo" aria-label="Almanaque ABAP" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Almanaque ABAP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Nomenclaturas e Convenções
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Almanaque ABAP" class="md-nav__button md-logo" aria-label="Almanaque ABAP" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    Almanaque ABAP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Almanaque ABAP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Fundamentos ABAP
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentos ABAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_variaveis_tipo_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Variáveis e Tipos de Dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_estruturas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Estruturas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_condicoes_logica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Condições e Lógica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Loops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_expressoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Expressões
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6_tabelas_internas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tabelas Internas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7_OO_basica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orientação a Objetos Básica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Nomenclaturas e Convenções
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nomenclaturas e Convenções
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Visão Geral
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regras-gerais" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔤 Regras Gerais
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-de-desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 Objetos de Desenvolvimento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Objetos de Desenvolvimento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes-e-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes e Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabelas-e-estruturas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabelas e Estruturas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elementos-de-dados-e-dominios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elementos de Dados e Domínios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Modules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variaveis-e-campos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔢 Variáveis e Campos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔢 Variáveis e Campos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefixos-de-variaveis-notacao-hungara" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prefixos de Variáveis (Notação Húngara)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-de-dicionario" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Objetos de Dicionário
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 Objetos de Dicionário">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-helps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search Helps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-de-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎨 Objetos de UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 Objetos de UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynpros-e-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynpros e Reports
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smartforms-e-adobe-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Smartforms e Adobe Forms
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-de-autorizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Objetos de Autorização
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-de-mensagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Objetos de Mensagem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boas-praticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Boas Práticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Boas Práticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fazer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Fazer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evitar" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Evitar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convencoes-por-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Convenções por Contexto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Convenções por Contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#em-classes-globais" class="md-nav__link">
+    <span class="md-ellipsis">
+      Em Classes Globais
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em-function-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Em Function Modules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Próximos Passos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      📖 Referências
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../sql/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    SQL ABAP
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            SQL ABAP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/1_select_basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SELECT Básico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/2_joins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JOINs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/3_agregacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agregações e GROUP BY
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/4_insert_update_delete/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    INSERT UPDATE DELETE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/5_where_dinamico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WHERE Dinâmico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/6_otimizacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Otimizações SQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cds/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CDS Views
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            CDS Views
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/1_introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introdução
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/2_joins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JOINs e Associações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/3_anotacoes_metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Anotações e Metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/4_funcoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções e Expressões
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cds/5_parametros_filtros_views_param/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Parâmetros e Views Parametrizadas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../objetos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Programação Orientada a Objetos
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Programação Orientada a Objetos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/1_classes_objetos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Classes e Objetos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/2_atributos_metodos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Atributos e Métodos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/3_construtores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Construtores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/4_interfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/5_heranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Herança
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/6_polimorfismo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Polimorfismo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/7_factory_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Factory Pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objetos/8_singleton/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Singleton Pattern
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../alvs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Tipos de ALV
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tipos de ALV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_classico_grid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Clássico Grid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_classico_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Clássico List
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_oo_salv_table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV OO SALV_TABLE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_oo_gui_grid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV OO GUI Grid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_tree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Tree
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_popup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Popup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_editavel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Editável
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_eventos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV com Eventos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_botoes_custom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Botões Custom
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_layout_variantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Layout/Variantes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alvs/alv_selecao_valores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ALV Seleção de Valores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../debug/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Debug e Análise
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Debug e Análise
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/1_breakpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Breakpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/2_watchpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Watchpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/3_debugger/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debugger Clássico vs Novo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/4_st22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Análise de Dumps ST22
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/5_sat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Runtime Analysis SAT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debug/6_debug_jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debug de Jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../performance/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Performance e Boas Práticas
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Performance e Boas Práticas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/1_for_all_entries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FOR ALL ENTRIES
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/2_indices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Índices de BD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/3_runtime_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Runtime Analysis SAT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/4_buffering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Table Buffering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/5_tabelas_internas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tabelas Internas Eficientes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../performance/6_armadilhas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Armadilhas Comuns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../integracoes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Integrações
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Integrações
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/1_rfc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RFC Remote Function Call
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/2_bapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BAPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/3_odata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OData Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/4_http_client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP Client
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/5_web_services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web Services SOAP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/6_idocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integracoes/7_rest_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API RESTful
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../jobs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Jobs e Processamento Background
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Jobs e Processamento Background
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/1_criar_jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Criar Jobs SM36
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/2_variantes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Variantes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/3_agendamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agendamento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/4_monitorizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitorização SM37
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/5_job_logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Job Logs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jobs/6_batch_processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Processamento Batch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../testes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Testes Unitários
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Testes Unitários
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/1_abap_unit_basico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ABAP Unit Básico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/2_test_fixtures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Fixtures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/3_assertions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assertions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/4_test_doubles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Doubles e Mocking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/5_injecao_dependencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Injeção de Dependências
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/6_code_coverage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cobertura de Código
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testes/7_tdd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TDD Test Driven Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Segurança
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Segurança
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/1_autorizacoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Autorizações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/2_authority_check/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AUTHORITY-CHECK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/3_roles_perfis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roles e Perfis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/4_s_develop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Objeto S_DEVELOP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/5_praticas_seguras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Práticas Seguras
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/6_sql_injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SQL Injection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../utilitarios/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Utilitários e Funções
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Utilitários e Funções
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/1_string_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    String Functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/2_data_hora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data e Hora
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/3_conversoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conversões
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/4_file_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    File Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/5_mensagens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mensagens
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/6_number_ranges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Number Ranges
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utilitarios/7_locks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Locks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cds_amdp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CDS & AMDP Avançado
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            CDS & AMDP Avançado
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../meus_programas/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Meus Programas
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Meus Programas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meus_programas/ZCL_UTIL_EXCEL_Documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Classe Manipulação de Ficheiros Excel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Visão Geral
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regras-gerais" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔤 Regras Gerais
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-de-desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 Objetos de Desenvolvimento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Objetos de Desenvolvimento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes-e-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes e Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabelas-e-estruturas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabelas e Estruturas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elementos-de-dados-e-dominios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elementos de Dados e Domínios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Modules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variaveis-e-campos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔢 Variáveis e Campos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔢 Variáveis e Campos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefixos-de-variaveis-notacao-hungara" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prefixos de Variáveis (Notação Húngara)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-de-dicionario" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Objetos de Dicionário
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 Objetos de Dicionário">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-helps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search Helps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-de-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎨 Objetos de UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 Objetos de UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynpros-e-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynpros e Reports
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smartforms-e-adobe-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Smartforms e Adobe Forms
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-de-autorizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Objetos de Autorização
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objetos-de-mensagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Objetos de Mensagem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boas-praticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Boas Práticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Boas Práticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fazer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Fazer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evitar" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❌ Evitar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convencoes-por-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Convenções por Contexto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Convenções por Contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#em-classes-globais" class="md-nav__link">
+    <span class="md-ellipsis">
+      Em Classes Globais
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em-function-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Em Function Modules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Próximos Passos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      📖 Referências
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="nomenclaturas-e-convencoes-abap">Nomenclaturas e Convenções ABAP</h1>
+<h2 id="visao-geral">📋 Visão Geral</h2>
+<p>Seguir <strong>convenções de nomenclatura</strong> garante código legível, manutenível e alinhado com as <strong>boas práticas SAP</strong>. Esta página documenta os prefixos e padrões recomendados.</p>
+<hr />
+<h2 id="regras-gerais">🔤 Regras Gerais</h2>
+<ol>
+<li><strong>Customer Namespace</strong>: Use <code>Z</code> ou <code>Y</code> para objetos customizados</li>
+<li><strong>Sem espaços</strong>: Use <code>_</code> (underscore) para separar palavras</li>
+<li><strong>Nomes descritivos</strong>: Evite abreviações obscuras</li>
+<li><strong>Case-insensitive</strong>: ABAP não diferencia maiúsculas/minúsculas, mas use MAIÚSCULAS para constantes</li>
+</ol>
+<hr />
+<h2 id="objetos-de-desenvolvimento">📦 Objetos de Desenvolvimento</h2>
+<h3 id="programas">Programas</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Report executável</td>
+<td><code>Z</code> ou <code>Y</code></td>
+<td><code>ZVENDA_RELATORIO</code></td>
+<td>Programas tipo 1</td>
+</tr>
+<tr>
+<td>Include</td>
+<td><code>Z</code> ou <code>Y</code></td>
+<td><code>ZINCLUDE_VENDAS</code></td>
+<td>Includes</td>
+</tr>
+<tr>
+<td>Module Pool</td>
+<td><code>SAPMZ</code></td>
+<td><code>SAPMZVENDA</code></td>
+<td>Programas tipo M</td>
+</tr>
+<tr>
+<td>Function Group</td>
+<td><code>Z</code> ou <code>Y</code></td>
+<td><code>ZVENDA</code></td>
+<td>Grupo de funções</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="classes-e-interfaces">Classes e Interfaces</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classe global</td>
+<td><code>ZCL_</code></td>
+<td><code>ZCL_VENDA_MANAGER</code></td>
+<td>Classes globais</td>
+</tr>
+<tr>
+<td>Classe local</td>
+<td><code>LCL_</code></td>
+<td><code>LCL_HELPER</code></td>
+<td>Classes locais em programas</td>
+</tr>
+<tr>
+<td>Classe de teste</td>
+<td><code>LTCL_</code></td>
+<td><code>LTCL_VENDA_TEST</code></td>
+<td>Classes de teste ABAP Unit</td>
+</tr>
+<tr>
+<td>Interface global</td>
+<td><code>ZIF_</code></td>
+<td><code>ZIF_CALCULADOR</code></td>
+<td>Interfaces globais</td>
+</tr>
+<tr>
+<td>Interface local</td>
+<td><code>LIF_</code></td>
+<td><code>LIF_HANDLER</code></td>
+<td>Interfaces locais</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exemplos:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">&quot; ✅ Correto</span>
+<span class="k">CLASS</span><span class="w"> </span><span class="nv">zcl_customer_manager</span><span class="w"> </span><span class="k">DEFINITION</span><span class="p">.</span>
+<span class="k">CLASS</span><span class="w"> </span><span class="nv">zcl_order_processor</span><span class="w"> </span><span class="k">DEFINITION</span><span class="p">.</span>
+
+<span class="c1">&quot; ❌ Evitar</span>
+<span class="k">CLASS</span><span class="w"> </span><span class="nv">z_cust</span><span class="w"> </span><span class="k">DEFINITION</span><span class="p">.</span><span class="w">        </span><span class="c1">&quot; Muito curto</span>
+<span class="k">CLASS</span><span class="w"> </span><span class="nv">CustomerManager</span><span class="w"> </span><span class="k">DEFINITION</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; Sem prefixo Z</span>
+</code></pre></div></p>
+<hr />
+<h3 id="tabelas-e-estruturas">Tabelas e Estruturas</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tabela transparente</td>
+<td><code>Z</code> ou <code>Y</code></td>
+<td><code>ZVENDA_HEADER</code></td>
+<td>Tabela de BD</td>
+</tr>
+<tr>
+<td>Estrutura</td>
+<td><code>Z</code> ou <code>Y</code></td>
+<td><code>ZSTR_VENDA</code></td>
+<td>Structure (sem tabela física)</td>
+</tr>
+<tr>
+<td>Tabela customizing</td>
+<td><code>ZTC_</code></td>
+<td><code>ZTC_CONFIG_VENDA</code></td>
+<td>Tabelas de configuração</td>
+</tr>
+<tr>
+<td>Append Structure</td>
+<td><code>ZA_</code></td>
+<td><code>ZA_MARA</code></td>
+<td>Extensão de tabela standard</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="elementos-de-dados-e-dominios">Elementos de Dados e Domínios</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elemento de dados</td>
+<td><code>ZE_</code></td>
+<td><code>ZE_CUSTOMER_ID</code></td>
+<td>Data element</td>
+</tr>
+<tr>
+<td>Domínio</td>
+<td><code>ZD_</code></td>
+<td><code>ZD_STATUS</code></td>
+<td>Domain</td>
+</tr>
+<tr>
+<td>Type Pool</td>
+<td><code>Z</code></td>
+<td><code>ZTYPE_POOL</code></td>
+<td>Type pool (legacy)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exemplo:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">&quot; Domínio</span>
+<span class="nv">ZD_STATUS</span><span class="p">:</span><span class="w"> </span><span class="nv">CHAR1</span><span class="w"> </span><span class="nv">com</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="w"> </span><span class="nv">I</span><span class="p">,</span><span class="w"> </span><span class="nv">C</span><span class="p">)</span>
+
+<span class="c1">&quot; Elemento de dados</span>
+<span class="nv">ZE_ORDER_STATUS</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nv">usa</span><span class="w"> </span><span class="nv">domínio</span><span class="w"> </span><span class="nv">ZD_STATUS</span>
+
+<span class="c1">&quot; Campo na tabela</span>
+<span class="nv">ZORDER_HEADER</span><span class="o">-</span><span class="nv">STATUS</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nv">tipo</span><span class="w"> </span><span class="nv">ZE_ORDER_STATUS</span>
+</code></pre></div></p>
+<hr />
+<h3 id="function-modules">Function Modules</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function Module</td>
+<td><code>Z_</code></td>
+<td><code>Z_CALC_PRICE</code></td>
+<td>FM customizado</td>
+</tr>
+<tr>
+<td>RFC-enabled FM</td>
+<td><code>Z_RFC_</code></td>
+<td><code>Z_RFC_GET_ORDERS</code></td>
+<td>Remote-enabled</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exemplo:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="nv">z_calc_discount</span><span class="p">.</span>
+<span class="w">  </span><span class="k">IMPORTING</span><span class="w"> </span><span class="nv">iv_amount</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">p</span><span class="p">.</span>
+<span class="w">  </span><span class="k">EXPORTING</span><span class="w"> </span><span class="nv">ev_discount</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">p</span><span class="p">.</span>
+<span class="k">ENDFUNCTION</span><span class="p">.</span>
+</code></pre></div></p>
+<hr />
+<h2 id="variaveis-e-campos">🔢 Variáveis e Campos</h2>
+<h3 id="prefixos-de-variaveis-notacao-hungara">Prefixos de Variáveis (Notação Húngara)</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local variable</td>
+<td><code>lv_</code></td>
+<td><code>lv_customer_id</code></td>
+<td>Variável local</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td><code>ls_</code></td>
+<td><code>ls_customer</code></td>
+<td>Estrutura local</td>
+</tr>
+<tr>
+<td>Internal table</td>
+<td><code>lt_</code></td>
+<td><code>lt_orders</code></td>
+<td>Tabela interna</td>
+</tr>
+<tr>
+<td>Global variable</td>
+<td><code>gv_</code></td>
+<td><code>gv_total_amount</code></td>
+<td>Variável global</td>
+</tr>
+<tr>
+<td>Global structure</td>
+<td><code>gs_</code></td>
+<td><code>gs_config</code></td>
+<td>Estrutura global</td>
+</tr>
+<tr>
+<td>Global table</td>
+<td><code>gt_</code></td>
+<td><code>gt_customers</code></td>
+<td>Tabela global</td>
+</tr>
+<tr>
+<td>Parameter</td>
+<td><code>iv_</code>, <code>ev_</code>, <code>cv_</code></td>
+<td><code>iv_input</code>, <code>ev_output</code></td>
+<td>Importing/Exporting/Changing</td>
+</tr>
+<tr>
+<td>Field-symbol</td>
+<td><code>&lt;fs_&gt;</code></td>
+<td><code>&lt;fs_customer&gt;</code></td>
+<td>Field-symbol</td>
+</tr>
+<tr>
+<td>Reference</td>
+<td><code>lr_</code></td>
+<td><code>lr_object</code></td>
+<td>Referência local</td>
+</tr>
+<tr>
+<td>Constant</td>
+<td><code>lc_</code> / <code>gc_</code></td>
+<td><code>lc_max_items</code></td>
+<td>Constante local/global</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exemplo completo:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">METHOD</span><span class="w"> </span><span class="nf">calculate_total</span><span class="p">.</span>
+<span class="w">  </span><span class="c1">&quot; Parâmetros</span>
+<span class="w">  </span><span class="k">DATA</span><span class="p">(</span><span class="nv">lv_input</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">iv_amount</span><span class="p">.</span><span class="w">      </span><span class="c1">&quot; Input parameter</span>
+
+<span class="w">  </span><span class="c1">&quot; Variáveis locais</span>
+<span class="w">  </span><span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lv_total</span><span class="w">   </span><span class="k">TYPE </span><span class="nv">p</span><span class="p">,</span><span class="w">          </span><span class="c1">&quot; Local variable</span>
+<span class="w">        </span><span class="nv">lv_tax</span><span class="w">     </span><span class="k">TYPE </span><span class="nv">p</span><span class="p">,</span>
+<span class="w">        </span><span class="nv">ls_order</span><span class="w">   </span><span class="k">TYPE </span><span class="nv">zorder</span><span class="p">,</span><span class="w">     </span><span class="c1">&quot; Local structure</span>
+<span class="w">        </span><span class="nv">lt_items</span><span class="w">   </span><span class="k">TYPE TABLE OF</span><span class="w"> </span><span class="nv">zorder_item</span><span class="p">,</span><span class="w">  </span><span class="c1">&quot; Local table</span>
+<span class="w">        </span><span class="nv">&lt;fs_item&gt;</span><span class="w">  </span><span class="k">TYPE </span><span class="nv">zorder_item</span><span class="p">.</span><span class="w">           </span><span class="c1">&quot; Field-symbol</span>
+
+<span class="w">  </span><span class="c1">&quot; Constantes</span>
+<span class="w">  </span><span class="k">CONSTANTS</span><span class="p">:</span><span class="w"> </span><span class="nv">lc_tax_rate</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">p</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="s1">&#39;0.23&#39;</span><span class="p">.</span>
+
+<span class="w">  </span><span class="c1">&quot; Referências</span>
+<span class="w">  </span><span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lr_calculator</span><span class="w"> </span><span class="k">TYPE REF TO</span><span class="w"> </span><span class="nv">zcl_calculator</span><span class="p">.</span>
+
+<span class="w">  </span><span class="c1">&quot; Global (atributo da classe)</span>
+<span class="w">  </span><span class="nv">gv_counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">gv_counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span>
+<span class="k">ENDMETHOD</span><span class="p">.</span>
+</code></pre></div></p>
+<hr />
+<h2 id="objetos-de-dicionario">📝 Objetos de Dicionário</h2>
+<h3 id="search-helps">Search Helps</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search Help</td>
+<td><code>ZSH_</code></td>
+<td><code>ZSH_CUSTOMERS</code></td>
+<td>F4 help</td>
+</tr>
+<tr>
+<td>Collective SH</td>
+<td><code>ZSHC_</code></td>
+<td><code>ZSHC_ORDERS</code></td>
+<td>Collective search help</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="table-types">Table Types</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Table Type</td>
+<td><code>ZTT_</code></td>
+<td><code>ZTT_ORDERS</code></td>
+<td>Tipo tabela</td>
+</tr>
+<tr>
+<td>Range Table Type</td>
+<td><code>ZRTT_</code></td>
+<td><code>ZRTT_CUSTOMER</code></td>
+<td>RANGE table</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exemplo:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">&quot; Definição</span>
+<span class="k">TYPES</span><span class="p">:</span><span class="w"> </span><span class="nv">ztt_orders</span><span class="w"> </span><span class="k">TYPE TABLE OF</span><span class="w"> </span><span class="nv">zorder</span><span class="p">.</span>
+
+<span class="c1">&quot; Uso</span>
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lt_orders</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">ztt_orders</span><span class="p">.</span>
+</code></pre></div></p>
+<hr />
+<h2 id="objetos-de-ui">🎨 Objetos de UI</h2>
+<h3 id="dynpros-e-reports">Dynpros e Reports</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Selection Screen</td>
+<td>-</td>
+<td><code>PARAMETERS: p_kunnr</code></td>
+<td>Tela de seleção</td>
+</tr>
+<tr>
+<td>Parameter</td>
+<td><code>p_</code></td>
+<td><code>p_customer_id</code></td>
+<td>PARAMETERS</td>
+</tr>
+<tr>
+<td>Select-Option</td>
+<td><code>s_</code></td>
+<td><code>s_date</code></td>
+<td>SELECT-OPTIONS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exemplo:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">PARAMETERS</span><span class="p">:</span><span class="w"> </span><span class="nv">p_kunnr</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">kunnr</span><span class="p">,</span>
+<span class="w">            </span><span class="nv">p_date</span><span class="w">  </span><span class="k">TYPE </span><span class="nv">datum</span><span class="p">.</span>
+
+<span class="k">SELECT-OPTIONS</span><span class="p">:</span><span class="w"> </span><span class="nv">s_vkorg</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="nv">vbak</span><span class="o">-</span><span class="nv">vkorg</span><span class="p">,</span>
+<span class="w">                </span><span class="nv">s_datum</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="nv">sy</span><span class="o">-</span><span class="nv">datum</span><span class="p">.</span>
+</code></pre></div></p>
+<hr />
+<h3 id="smartforms-e-adobe-forms">Smartforms e Adobe Forms</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Smartform</td>
+<td><code>Z_SF_</code></td>
+<td><code>Z_SF_INVOICE</code></td>
+<td>Smartform</td>
+</tr>
+<tr>
+<td>Adobe Form</td>
+<td><code>Z_AF_</code></td>
+<td><code>Z_AF_INVOICE</code></td>
+<td>Adobe Form</td>
+</tr>
+<tr>
+<td>Form Interface</td>
+<td><code>Z_FI_</code></td>
+<td><code>Z_FI_INVOICE</code></td>
+<td>Interface do form</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="objetos-de-autorizacao">🔐 Objetos de Autorização</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization Object</td>
+<td><code>Z_</code></td>
+<td><code>Z_VENDA</code></td>
+<td>Objeto de autorização</td>
+</tr>
+<tr>
+<td>Authorization Class</td>
+<td><code>Z</code></td>
+<td><code>ZVENDA</code></td>
+<td>Classe de autorização</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="objetos-de-mensagem">📊 Objetos de Mensagem</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Prefixo</th>
+<th>Exemplo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Message Class</td>
+<td><code>Z</code> ou <code>Y</code></td>
+<td><code>ZVENDA</code></td>
+<td>Classe de mensagem</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exemplo:</strong>
+<div class="highlight"><pre><span></span><code><span class="k">MESSAGE</span><span class="w"> </span><span class="nv">e001</span><span class="p">(</span><span class="nv">zvenda</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="nv">lv_customer</span><span class="p">.</span>
+<span class="c1">&quot; zvenda = classe de mensagem</span>
+<span class="c1">&quot; e001 = mensagem número 001, tipo erro</span>
+</code></pre></div></p>
+<hr />
+<h2 id="boas-praticas">🎯 Boas Práticas</h2>
+<h3 id="fazer">✅ Fazer</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">&quot; Nomes descritivos</span>
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lv_customer_name</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">string</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">lv_total_amount</span><span class="w">  </span><span class="k">TYPE </span><span class="nv">p</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">lt_sales_orders</span><span class="w">  </span><span class="k">TYPE TABLE OF</span><span class="w"> </span><span class="nv">zvenda</span><span class="p">.</span>
+
+<span class="c1">&quot; Constantes em UPPER_CASE</span>
+<span class="k">CONSTANTS</span><span class="p">:</span><span class="w"> </span><span class="nv">lc_max_items</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">i</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">           </span><span class="nv">gc_tax_rate</span><span class="w">  </span><span class="k">TYPE </span><span class="nv">p</span><span class="w"> </span><span class="k">VALUE</span><span class="w"> </span><span class="s1">&#39;0.23&#39;</span><span class="p">.</span>
+
+<span class="c1">&quot; Classes com prefixo</span>
+<span class="k">CLASS</span><span class="w"> </span><span class="nv">zcl_order_processor</span><span class="w"> </span><span class="k">DEFINITION</span><span class="p">.</span>
+<span class="k">CLASS</span><span class="w"> </span><span class="nv">zcl_customer_manager</span><span class="w"> </span><span class="k">DEFINITION</span><span class="p">.</span>
+
+<span class="c1">&quot; Interfaces claras</span>
+<span class="k">INTERFACE</span><span class="w"> </span><span class="nv">zif_calculator</span><span class="p">.</span>
+<span class="k">INTERFACE</span><span class="w"> </span><span class="nv">zif_validator</span><span class="p">.</span>
+
+<span class="c1">&quot; Tabelas com namespace</span>
+<span class="nv">ZVENDA_HEADER</span>
+<span class="nv">ZVENDA_ITEM</span>
+<span class="nv">ZTC_CONFIG_PRICING</span>
+</code></pre></div>
+<h3 id="evitar">❌ Evitar</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">&quot; ❌ Nomes muito curtos</span>
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">i</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">tmp</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">string</span><span class="p">.</span>
+
+<span class="c1">&quot; ❌ Sem prefixos</span>
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">customer</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">kunnr</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">amount</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">p</span><span class="p">.</span>
+
+<span class="c1">&quot; ❌ Abreviações obscuras</span>
+<span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">lv_cst_nm</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">string</span><span class="p">.</span><span class="w">  </span><span class="c1">&quot; customer name?</span>
+
+<span class="c1">&quot; ❌ Classes sem ZCL</span>
+<span class="k">CLASS</span><span class="w"> </span><span class="nv">customer_manager</span><span class="w"> </span><span class="k">DEFINITION</span><span class="p">.</span>
+
+<span class="c1">&quot; ❌ Tabelas sem Z/Y</span>
+<span class="k">TABLE</span><span class="w"> </span><span class="nv">my_orders</span><span class="p">.</span>
+</code></pre></div>
+<hr />
+<h2 id="convencoes-por-contexto">📚 Convenções por Contexto</h2>
+<h3 id="em-classes-globais">Em Classes Globais</h3>
+<div class="highlight"><pre><span></span><code><span class="k">CLASS</span><span class="w"> </span><span class="nv">zcl_order_processor</span><span class="w"> </span><span class="k">DEFINITION</span><span class="w"> </span><span class="k">PUBLIC</span><span class="p">.</span>
+
+<span class="w">  </span><span class="k">PUBLIC SECTION</span><span class="p">.</span>
+<span class="w">    </span><span class="c1">&quot; Atributos públicos (evitar)</span>
+<span class="w">    </span><span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">gv_public_var</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">i</span><span class="w"> </span><span class="k">READ</span><span class="o">-</span><span class="nv">ONLY</span><span class="p">.</span>
+
+<span class="w">    </span><span class="c1">&quot; Métodos públicos</span>
+<span class="w">    </span><span class="k">METHODS</span><span class="p">:</span><span class="w"> </span><span class="nv">process_order</span>
+<span class="w">      </span><span class="k">IMPORTING</span><span class="w"> </span><span class="nv">iv_order_id</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">zorder_id</span>
+<span class="w">      </span><span class="k">RETURNING</span><span class="w"> </span><span class="k">VALUE</span><span class="p">(</span><span class="nv">rv_success</span><span class="p">)</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">abap_bool</span><span class="p">.</span>
+
+<span class="w">  </span><span class="k">PROTECTED SECTION</span><span class="p">.</span>
+<span class="w">    </span><span class="c1">&quot; Atributos protegidos</span>
+<span class="w">    </span><span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">gv_config</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">zconfig</span><span class="p">.</span>
+
+<span class="w">  </span><span class="k">PRIVATE SECTION</span><span class="p">.</span>
+<span class="w">    </span><span class="c1">&quot; Atributos privados</span>
+<span class="w">    </span><span class="k">DATA</span><span class="p">:</span><span class="w"> </span><span class="nv">gv_counter</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">i</span><span class="p">,</span>
+<span class="w">          </span><span class="nv">gt_cache</span><span class="w">   </span><span class="k">TYPE TABLE OF</span><span class="w"> </span><span class="nv">zorder</span><span class="p">.</span>
+
+<span class="w">    </span><span class="c1">&quot; Métodos privados</span>
+<span class="w">    </span><span class="k">METHODS</span><span class="p">:</span><span class="w"> </span><span class="nv">validate_order</span>
+<span class="w">      </span><span class="k">IMPORTING</span><span class="w"> </span><span class="nv">iv_order_id</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">zorder_id</span><span class="p">.</span>
+
+<span class="k">ENDCLASS</span><span class="p">.</span>
+</code></pre></div>
+<h3 id="em-function-modules">Em Function Modules</h3>
+<div class="highlight"><pre><span></span><code><span class="k">FUNCTION</span><span class="w"> </span><span class="nv">z_calculate_price</span><span class="p">.</span>
+<span class="w">  </span><span class="k">IMPORTING</span>
+<span class="w">    </span><span class="k">VALUE</span><span class="p">(</span><span class="nv">iv_product_id</span><span class="p">)</span><span class="w"> </span><span class="k">TYPE </span><span class="nv">matnr</span>
+<span class="w">    </span><span class="k">VALUE</span><span class="p">(</span><span class="nv">iv_quantity</span><span class="p">)</span><span class="w">   </span><span class="k">TYPE </span><span class="nv">menge_d</span>
+<span class="w">  </span><span class="k">EXPORTING</span>
+<span class="w">    </span><span class="k">VALUE</span><span class="p">(</span><span class="nv">ev_price</span><span class="p">)</span><span class="w">      </span><span class="k">TYPE </span><span class="nv">netpr</span>
+<span class="w">  </span><span class="k">EXCEPTIONS</span>
+<span class="w">    </span><span class="nv">product_not_found</span>
+<span class="w">    </span><span class="nv">invalid_quantity</span><span class="p">.</span>
+</code></pre></div>
+<hr />
+<h2 id="proximos-passos">🔗 Próximos Passos</h2>
+<ul>
+<li><strong><a href="../7_OO_basica/">Orientação a Objetos Básica</a></strong> - Aplicar nomenclaturas em OO</li>
+<li><strong><a href="../../objetos/1_classes_objetos/">Classes e Objetos</a></strong> - Criar classes seguindo convenções</li>
+<li><strong><a href="../../security/">Security</a></strong> - Nomenclaturas de objetos de autorização</li>
+</ul>
+<hr />
+<h2 id="referencias">📖 Referências</h2>
+<ul>
+<li>SAP Naming Conventions (SAP Help Portal)</li>
+<li>ABAP Code Inspector (SCI) - verifica nomenclaturas</li>
+<li>Clean ABAP Guidelines</li>
+</ul>
+<hr />
+<p><strong>Tags:</strong> <code>#nomenclaturas</code> <code>#naming</code> <code>#conventions</code> <code>#best-practices</code> <code>#zcl</code> <code>#zif</code></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
