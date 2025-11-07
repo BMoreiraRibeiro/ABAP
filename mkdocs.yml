@@ -3,6 +3,9 @@ site_url: https://bmoreiraribeiro.github.io/ABAP/
 theme:
   name: material
   language: pt
+  icon:
+    logo: icon.png
+  favicon: icon.png
   features:
     - navigation.instant     # navegação rápida
     - navigation.top         # botão "voltar ao topo"
